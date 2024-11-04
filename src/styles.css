@@ -160,3 +160,29 @@ h6 {
   opacity: 0 !important; /* Evita que la oscuridad persista */
   pointer-events: none; /* Deshabilita los eventos en el backdrop */
 }
+
+.kgp-title {
+	font-size: 1.25em;
+}
+
+.kgp-sub-title {
+	font-size: 1.05em;
+}
+
+.kgp-body {
+	font-size: 1em;
+}
+
+.kgp-little {
+	font-size: 0.7em;
+}
+
+.logo-comercio {
+	width: 100px;
+	/*height: 100px;*/
+}
+
+.shoppingCart-productImage {
+	width: 65px;
+	height: 65px;
+}
