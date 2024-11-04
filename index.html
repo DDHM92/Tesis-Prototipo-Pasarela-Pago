@@ -45,27 +45,6 @@
           <div class="nav-item px-0">
             <div class="card px-0 py-5 shadow d-block d-md-none">
               <div id="contenedor-carrito-movil" class="container text-center"></div>
-              <!-- <div class="container text-center pt-5" id="divLogos">
-                <div class="row text-center">
-                  <h4 class="mb-3">Nuestras Marcas</h4>
-                  <div class="col-6 d-flex justify-content-center py-2">
-                    <img src="https://pay.kamaygroup.com/Content/IMG/Comercios/Zarpe_250.png" alt="Logo comercio"
-                      height="40" class="d-inline-block align-text-top rounded" />
-                  </div>
-                  <div class="col-6 d-flex justify-content-center py-2">
-                    <img src="https://pay.kamaygroup.com/Content/IMG/Comercios/SSA_150.png" alt="Logo comercio"
-                      height="70" class="d-inline-block align-text-top rounded" />
-                  </div>
-                  <div class="col-6 d-flex justify-content-center py-2">
-                    <img src="https://pay.kamaygroup.com/Content/IMG/Productos/ZPremium.png" alt="Logo comercio"
-                      height="120" class="d-inline-block align-text-top rounded" />
-                  </div>
-                  <div class="col-6 d-flex justify-content-center py-2">
-                    <img src="https://pay.kamaygroup.com/Content/IMG/Comercios/OPEN_MARCA.svg" alt="Logo comercio"
-                      height="90" class="d-inline-block align-text-top rounded" />
-                  </div>
-                </div>
-              </div> -->
             </div>
             <button id="toggle-dark-mode" class="btn btn-light" onclick="toggleDarkMode(); return false;">
               <span id="theme-icon" class="bi bi-sun-fill"></span>
@@ -81,12 +60,12 @@
       <div class="row justify-content-center justify-content-md-between pt-4">
         <div class="col-6 d-none d-md-block">
           <section>
-              <div id="contenedor-carrito-desktop" class="container text-center"></div>
+            <div id="contenedor-carrito-desktop" class="container text-center"></div>
           </section>
         </div>
         <div class="col-6">
           <section>
-            <div class="container text-center py-2">
+            <div class="row text-center mx-auto" id="divPhone">
               <div class="row">
                 <div class="col">
                   <img class="rounded logo-comercio" alt="Logo comercio" id="imgLogoEscritorio">
@@ -97,7 +76,7 @@
               <h4>Monto a pagar $<strong id="lblPostAmount">40.00</strong></h4>
             </div>
             <div class="container text-center pt-5">
-              <div class="row text-center mx-auto">
+              <div class="row text-center mx-auto" id="divCellphone">
                 <div class="col-12 d-flex justify-content-center">
                   <div class="form-floating mb-3" id="divBtnSendSMS">
                     <input type="tel" class="form-control text-center" id="txtPhone" placeholder="Número celular"
@@ -117,7 +96,7 @@
                 </div>
               </div>
 
-              <div id="divtoken" class="my-4" style="display: none;">
+              <div id="divtoken" class="my-2" style="display: none;">
                 <div class="row text-center">
                   <label class="form-label kgp-body" id="LblPhoneMessage">Hemos enviado un código a tu teléfono</label>
                 </div>
@@ -291,6 +270,39 @@
 
       // Actualizar el logo después de cambiar el tema
       updateLogoBasedOnTheme();
+    }
+    
+    function enviarCodigo() {
+      const telefonoInput = document.getElementById('txtPhone');
+      const numeroTelefono = telefonoInput.value;
+
+      // Expresión regular para validar el formato del número de teléfono
+      const regexTelefono = /^(?:[78]\d{7}|503[78]\d{7})$/;
+
+      if (!regexTelefono.test(numeroTelefono)) {
+        // Si el número de teléfono no es válido, mostrar un mensaje de error en el toast
+        document.getElementById('toastTitle').textContent = 'Error';
+        document.getElementById('toastMessage').textContent =
+          'Por favor, ingresa un número de teléfono válido.';
+        const toastElement = document.getElementById('myToast');
+        const toast = new bootstrap.Toast(toastElement);
+        toast.show();
+        return; // Salir de la función si el número es inválido
+      }
+
+      // Si el número de teléfono es válido, ocultar el campo de teléfono y mostrar el campo de OTP
+      document.getElementById('divPhone').style.display = 'none';
+      document.getElementById('divtoken').style.display = 'block';
+
+      // Actualizar los textos del toast para la confirmación de envío de código
+      document.getElementById('toastTitle').textContent = 'Código Enviado';
+      document.getElementById('toastMessage').textContent =
+        'El código de verificación ha sido enviado a tu número de teléfono.';
+
+      // Mostrar el toast de confirmación
+      const toastElement = document.getElementById('myToast');
+      const toast = new bootstrap.Toast(toastElement);
+      toast.show();
     }
   </script>
 
