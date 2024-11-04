@@ -42,11 +42,18 @@
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-          <div class="nav-item px-1">
-            <div class="card px-2 py-4 shadow d-block d-md-none">
-              <div id="contenedor-carrito-movil" class="container text-center"></div>
+          <div class="nav-item px-0">
+            <div class="card px-0 py-2 shadow d-block d-md-none bg-light">
+              <div
+                id="contenedor-carrito-movil"
+                class="container text-center"
+              ></div>
             </div>
-            <button id="toggle-dark-mode" class="btn btn-light" onclick="toggleDarkMode(); return false;">
+            <button
+              id="toggle-dark-mode"
+              class="btn btn-light"
+              onclick="toggleDarkMode(); return false;"
+            >
               <span id="theme-icon" class="bi bi-sun-fill"></span>
             </button>
           </div>
@@ -58,9 +65,9 @@
   <main class="flex-grow-1">
     <div class="container pt-4 mt-5">
       <div class="row justify-content-center pt-4">
-        <div class="col-5">
+        <div class="col-5 d-none d-md-block">
           <section>
-            <div class="card px-2 py-4 shadow d-none d-md-block">
+            <div class="card px-2 py-4 shadow">
               <div id="contenedor-carrito-desktop" class="container text-center"></div>
             </div>
           </section>
