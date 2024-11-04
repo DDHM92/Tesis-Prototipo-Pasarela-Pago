@@ -123,8 +123,7 @@ const comercios = [
 // Función para crear el HTML dinámico del carrito
 function cargarCarritoAleatorio() {
   // Seleccionar comercio aleatorio
-  const comercioAleatorio =
-    comercios[Math.floor(Math.random() * comercios.length)];
+  const comercioAleatorio = comercios[Math.floor(Math.random() * comercios.length)];
 
   // Crear el HTML del carrito basado en el comercio seleccionado
   let carritoHTML = `
@@ -151,17 +150,13 @@ function cargarCarritoAleatorio() {
     carritoHTML += `
           <div class="row text-start my-2 align-items-center">
               <div class="col-3">
-                  <img class="rounded shoppingCart-productImage" src="${producto.imagen
-      }" alt="${producto.nombre}">
+                  <img class="rounded shoppingCart-productImage" src="${producto.imagen}" alt="${producto.nombre}">
               </div>
               <div class="col-6">
-                  <span class="kgp-body">${producto.nombre} (${producto.cantidad
-      })</span>
+                  <span class="kgp-body">${producto.nombre} (${producto.cantidad})</span>
               </div>
               <div class="col-3 text-end">
-                  <span class="kgp-body">$${producto.precio.toFixed(
-        2
-      )}</span>
+                  <span class="kgp-body">$${producto.precio.toFixed(2)}</span>
               </div>
           </div>
       `;
@@ -175,18 +170,19 @@ function cargarCarritoAleatorio() {
           </div>
           <div class="col-3"></div>
           <div class="col-3 text-end">
-              <span id="lblPostAmount1Desktop" class="kgp-sub-title" style="font-weight:bold;">$${total.toFixed(
-    2
-  )}</span>
+              <span id="lblPostAmount1Desktop" class="kgp-sub-title" style="font-weight:bold;">$${total.toFixed(2)}</span>
           </div>
       </div>
   </section>
   </div>
   `;
 
-  // Insertar el HTML en el contenedor
+  // Insertar el HTML en los contenedores
   document.getElementById('contenedor-carrito-desktop').innerHTML = carritoHTML;
   document.getElementById('contenedor-carrito-movil').innerHTML = carritoHTML;
+  
+  // Establecer la URL del logo
+  document.getElementById("imgLogoEscritorio").src = comercioAleatorio.logo;
 }
 
 // Ejecutar la función al cargar la página
