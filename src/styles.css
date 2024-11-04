@@ -161,21 +161,24 @@ h6 {
   pointer-events: none; /* Deshabilita los eventos en el backdrop */
 }
 
-.kgp-title {
-	font-size: 1.0em;
+@media (max-width: 767px) {
+  .kgp-title {
+    font-size: 1.0em;
+  }
+
+  .kgp-sub-title {
+    font-size: 0.85em;
+  }
+
+  .kgp-body {
+    font-size: 0.8em;
+  }
+
+  .kgp-little {
+    font-size: 0.7em;
+  }
 }
 
-.kgp-sub-title {
-	font-size: 0.85em;
-}
-
-.kgp-body {
-	font-size: 0.8em;
-}
-
-.kgp-little {
-	font-size: 0.7em;
-}
 
 .logo-comercio {
 	width: 100px;
