@@ -95,10 +95,13 @@
                 <div class="row text-center">
                   <label class="form-label kgp-body" id="LblPhoneMessage">Hemos enviado un código a tu teléfono</label>
                 </div>
-                <div class="row text-center mt-3">
-                  <div class="col d-flex justify-content-center">
-                    <input type="tel" id="txtToken" autocomplete="one-time-code" inputmode="numeric"
-                      class="text-center form-control" pattern="\d{6}" maxlength="6" required />
+                <div class="row text-center mx-auto mt-3">
+                  <div class="col-12 d-flex justify-content-center">
+                    <div class="form-floating mb-3">
+                      <input type="tel" id="txtToken" autocomplete="one-time-code" inputmode="numeric" placeholder="OTP"
+                        class="form-control text-center" pattern="\d{6}" maxlength="6" required />
+                      <label for="txtToken">OTP</label>
+                    </div>
                   </div>
                 </div>
                 <div class="row">
