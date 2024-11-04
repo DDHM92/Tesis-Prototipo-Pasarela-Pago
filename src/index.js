@@ -1,5 +1,3 @@
-import './styles.scss';
-
 // Función para cargar el tema al iniciar la página
 function loadTheme() {
   const htmlElement = document.documentElement;
