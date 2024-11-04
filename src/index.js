@@ -82,7 +82,7 @@ const comercios = [
       {
         nombre: 'Envio',
         cantidad: 1,
-        precio: 0.0,
+        precio: 5.0,
         imagen: 'https://pay.kamaygroup.com/Content/IMG/Productos/006%20ENTREGA.svg',
       },
     ],
