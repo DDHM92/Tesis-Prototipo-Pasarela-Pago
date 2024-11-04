@@ -138,8 +138,8 @@ function cargarCarritoAleatorio() {
                   <div class="col-6">
                       <span class="kgp-sub-title" style="font-weight:bold;">Producto</span>
                   </div>
-                  <div class="col-3"></div>
-                  <div class="col-3 text-end">
+                  <div class="col-2"></div>
+                  <div class="col-4 text-end">
                       <span class="kgp-sub-title" style="font-weight:bold;">Subtotal</span>
                   </div>
               </div>
