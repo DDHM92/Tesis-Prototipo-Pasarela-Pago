@@ -338,7 +338,7 @@
       setTimeout(() => {
         hideLoader();
         // Ocultar el campo de teléfono y mostrar el campo de OTP
-        document.getElementById('divBtnSendSMS').style.display = 'none';
+        document.getElementById('divPhone').style.display = 'none';
         document.getElementById('divtoken').style.display = 'block';
 
         // Mostrar el toast de confirmación
@@ -358,7 +358,7 @@
 
         // Verificar si el OTP es correcto
         if (otpCode === '999999') {
-          window.location.href = '/module/pay.html'; // Redirige a la página de pago
+          window.location.href = 'https://xdaniel17.github.io/Tesis-Prototipo-Pasarela-Pago.github.io/Module/Pay.html';
         } else {
           // Si el OTP es incorrecto, muestra un toast de error
           showToast("Código Incorrecto", "El código ingresado no es correcto. Por favor, intenta nuevamente.", "Hace unos segundos");
