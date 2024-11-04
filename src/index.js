@@ -183,6 +183,7 @@ function cargarCarritoAleatorio() {
   
   // Establecer la URL del logo
   document.getElementById("imgLogoEscritorio").src = comercioAleatorio.logo;
+  document.getElementById('lblPostAmount').textContent = total.toFixed(2);
 }
 
 // Ejecutar la función al cargar la página
