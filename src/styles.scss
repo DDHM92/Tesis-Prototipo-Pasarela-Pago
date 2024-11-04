@@ -1,0 +1,164 @@
+// Customizing Bootstrap with Sass variables:
+// https://getbootstrap.com/docs/5.0/customize/sass/
+
+// $primary: #276fc2;
+// $secondary: #e8d21d;
+// $border-radius: 1px;
+
+@import '../node_modules/bootstrap/scss/bootstrap';
+
+html,
+body {
+  font-family: 'Poppins', sans-serif;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-submenu {
+  font-family: 'Poppins', sans-serif;
+}
+
+.dropdown-submenu .dropdown-menu {
+  font-family: 'Poppins', sans-serif;
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+}
+
+form {
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Esto permite que el contenido crezca */
+}
+
+/* Estilos para modo claro */
+#navbar {
+  font-family: 'Poppins', sans-serif;
+  background-color: #ffffff; /* Color sólido para modo claro */
+}
+
+/* Estilos para modo oscuro */
+[data-bs-theme='dark'] #navbar {
+  background-color: #343a40; /* Color sólido para modo oscuro */
+}
+
+footer {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f8f9fa;
+  padding: 0.5rem 0;
+  width: 100%;
+  text-align: center;
+  color: #000; /* Texto negro por defecto */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.footer-links a {
+  text-decoration: none; /* Quitar subrayado */
+}
+
+.footer-links a:hover {
+  text-decoration: underline; /* Subrayar al pasar el mouse */
+}
+
+/* Estilos dinámicos del footer en modo oscuro */
+[data-bs-theme='dark'] footer {
+  background-color: #343a40;
+  color: #fff;
+}
+
+/* Estilos para el menú adaptado al modo oscuro */
+.navbar-light {
+  background-color: var(--bs-light);
+}
+
+.navbar-dark {
+  background-color: var(--bs-dark);
+}
+
+/* Colores dinámicos para los links */
+.navbar-light .nav-link {
+  color: #000;
+}
+
+.navbar-dark .nav-link {
+  color: #fff;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Poppins', sans-serif;
+}
+
+#toggle-dark-mode {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.content-wrapper {
+  font-family: 'Poppins', sans-serif;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 5rem; /* Ajuste para compensar el espacio de la navbar fija */
+}
+
+.logo {
+  width: 105px;
+  height: auto;
+  display: block;
+  margin: 0 auto 20px;
+}
+
+/* Estilos para el overlay de carga */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semi-transparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050; /* Asegura que esté por encima de otros elementos */
+  display: none; /* Oculto por defecto */
+}
+
+/* Tamaño del spinner */
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+}
+
+@media (min-width: 768px) {
+  /* Spinner más grande en pantallas más grandes */
+  .spinner-border {
+    width: 5rem;
+    height: 5rem;
+  }
+}
+
+/* Estilo personalizado para el offcanvas */
+.custom-offcanvas {
+  width: 83% !important; /* Cambia este valor según sea necesario */
+}
+
+@media (min-width: 768px) {
+  .custom-offcanvas {
+    width: 250px !important; /* Ancho para pantallas más grandes */
+  }
+}
+
+.offcanvas-backdrop {
+  opacity: 0 !important; /* Evita que la oscuridad persista */
+  pointer-events: none; /* Deshabilita los eventos en el backdrop */
+}
