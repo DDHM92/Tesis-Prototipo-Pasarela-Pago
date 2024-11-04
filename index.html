@@ -271,7 +271,7 @@
       // Actualizar el logo después de cambiar el tema
       updateLogoBasedOnTheme();
     }
-    
+
     function enviarCodigo() {
       const telefonoInput = document.getElementById('txtPhone');
       const numeroTelefono = telefonoInput.value;
@@ -303,6 +303,25 @@
       const toastElement = document.getElementById('myToast');
       const toast = new bootstrap.Toast(toastElement);
       toast.show();
+    }
+
+    function Validate() {
+      const otpInput = document.getElementById('txtToken');
+      const otpCode = otpInput.value;
+
+      if (otpCode === '999999') {
+        // Redirigir a la página de pago si el OTP es correcto
+        window.location.href = '/module/pay.html';
+      } else {
+        // Si el OTP es incorrecto, mostrar un mensaje de error en el toast
+        document.getElementById('toastTitle').textContent =
+          'Código Incorrecto';
+        document.getElementById('toastMessage').textContent =
+          'El código ingresado no es correcto. Por favor, intenta nuevamente.';
+        const toastElement = document.getElementById('myToast');
+        const toast = new bootstrap.Toast(toastElement);
+        toast.show();
+      }
     }
   </script>
 
