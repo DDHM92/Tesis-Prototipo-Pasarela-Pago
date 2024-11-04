@@ -24,6 +24,52 @@
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+
+    // Función para mostrar el loader
+    function showLoader() {
+      const overlay = document.getElementById('loadingOverlay');
+      overlay.style.display = 'flex'; // Muestra el overlay
+    }
+
+    // Función para ocultar el loader
+    function hideLoader() {
+      const overlay = document.getElementById('loadingOverlay');
+      overlay.style.display = 'none'; // Oculta el overlay
+    }
+
+    // Función para mostrar el toast notification
+    function showToast(title, message, time) {
+      const toastTitle = document.getElementById('toastTitle');
+      const toastMessage = document.getElementById('toastMessage');
+      const toastTime = document.getElementById('toastTime');
+
+      // Actualiza el contenido del toast
+      toastTitle.textContent = title;
+      toastMessage.textContent = message;
+      toastTime.textContent = "Hace unos segundos";
+
+      // Muestra el toast
+      const toastElement = new bootstrap.Toast(document.getElementById('myToast'));
+      toastElement.show();
+    }
+
+    // Función para mostrar el popup modal
+    function showModalPopup(title, message) {
+      const modalTitle = document.getElementById('myModalPopupLabel');
+      const modalBody = document.querySelector('#myModalPopup .modal-body');
+
+      // Actualiza el contenido del modal
+      modalTitle.textContent = title;
+      modalBody.textContent = message;
+
+      // Muestra el modal
+      const modalElement = new bootstrap.Modal(document.getElementById('myModalPopup'));
+      modalElement.show();
+    }
+  </script>
+
 </head>
 
 <body>
@@ -63,16 +109,12 @@
             <div id="contenedor-carrito-desktop" class="container text-center"></div>
           </section>
         </div>
-        <div class="col-6">          
+        <div class="col-6">
           <section>
             <div class="container text-center py-2">
               <div class="row">
                 <div class="col">
-                  <img
-                    class="rounded logo-comercio"
-                    alt="Logo comercio"
-                    id="imgLogoEscritorio"
-                  />
+                  <img class="rounded logo-comercio" alt="Logo comercio" id="imgLogoEscritorio" />
                 </div>
               </div>
             </div>
@@ -85,36 +127,18 @@
               <div class="row text-center mx-auto" id="divPhone">
                 <div class="col-12 d-flex justify-content-center">
                   <div class="form-floating mb-3" id="divBtnSendSMS">
-                    <input
-                      type="tel"
-                      class="form-control text-center"
-                      id="txtPhone"
-                      placeholder="Número celular"
-                      pattern="[0-9]*"
-                      required
-                    />
+                    <input type="tel" class="form-control text-center" id="txtPhone" placeholder="Número celular"
+                      pattern="[0-9]*" required />
                     <label for="txtPhone">Número celular</label>
                   </div>
                 </div>
                 <div class="col-12 my-2">
-                  <button
-                    type="button"
-                    id="BtnSendHsm"
-                    onclick="enviarCodigo();"
-                    class="btn btn-success mb-3"
-                  >
+                  <button type="button" id="BtnSendHsm" onclick="enviarCodigo();" class="btn btn-success mb-3">
                     Validar
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      class="bi bi-whatsapp"
-                      viewBox="0 0 16 16"
-                    >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                      class="bi bi-whatsapp" viewBox="0 0 16 16">
                       <path
-                        d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"
-                      />
+                        d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z" />
                     </svg>
                   </button>
                 </div>
@@ -122,36 +146,20 @@
 
               <div id="divtoken" class="my-2" style="display: none">
                 <div class="row text-center">
-                  <label class="form-label kgp-body" id="LblPhoneMessage"
-                    >Hemos enviado un código a tu teléfono</label
-                  >
+                  <label class="form-label kgp-body" id="LblPhoneMessage">Hemos enviado un código a tu teléfono</label>
                 </div>
                 <div class="row text-center mx-auto mt-3">
                   <div class="col-12 d-flex justify-content-center">
                     <div class="form-floating mb-3">
-                      <input
-                        type="tel"
-                        id="txtToken"
-                        autocomplete="one-time-code"
-                        inputmode="numeric"
-                        placeholder="OTP"
-                        class="form-control text-center"
-                        pattern="\d{6}"
-                        maxlength="6"
-                        required
-                      />
+                      <input type="tel" id="txtToken" autocomplete="one-time-code" inputmode="numeric" placeholder="OTP"
+                        class="form-control text-center" pattern="\d{6}" maxlength="6" required />
                       <label for="txtToken">OTP</label>
                     </div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-12 text-center">
-                    <button
-                      type="button"
-                      id="BtnValidate"
-                      class="btn btn-success mt-3"
-                      onclick="Validate();"
-                    >
+                    <button type="button" id="BtnValidate" class="btn btn-success mt-3" onclick="Validate();">
                       Validar
                     </button>
                   </div>
@@ -314,56 +322,50 @@
     }
 
     function enviarCodigo() {
-      const telefonoInput = document.getElementById('txtPhone');
-      const numeroTelefono = telefonoInput.value;
+      const phoneInput = document.getElementById('txtPhone').value;
 
-      // Expresión regular para validar el formato del número de teléfono
-      const regexTelefono = /^(?:[78]\d{7}|503[78]\d{7})$/;
-
-      if (!regexTelefono.test(numeroTelefono)) {
-        // Si el número de teléfono no es válido, mostrar un mensaje de error en el toast
-        document.getElementById('toastTitle').textContent = 'Error';
-        document.getElementById('toastMessage').textContent =
-          'Por favor, ingresa un número de teléfono válido.';
-        const toastElement = document.getElementById('myToast');
-        const toast = new bootstrap.Toast(toastElement);
-        toast.show();
-        return; // Salir de la función si el número es inválido
+      // Validar que el número de teléfono cumpla con el formato
+      const isValidPhone = /^(7|8)\d{7}$|^503(7|8)\d{7}$/.test(phoneInput);
+      if (!isValidPhone) {
+        showToast("Número inválido", "Por favor, ingrese un número de teléfono válido.", "Hace unos segundos");
+        return;
       }
 
-      // Si el número de teléfono es válido, ocultar el campo de teléfono y mostrar el campo de OTP
-      document.getElementById('divPhone').style.display = 'none';
-      document.getElementById('divtoken').style.display = 'block';
+      // Mostrar loader mientras se envía el código
+      showLoader();
 
-      // Actualizar los textos del toast para la confirmación de envío de código
-      document.getElementById('toastTitle').textContent = 'Código Enviado';
-      document.getElementById('toastMessage').textContent =
-        'El código de verificación ha sido enviado a tu número de teléfono.';
+      // Simulación de envío de código con un delay
+      setTimeout(() => {
+        hideLoader();
+        // Ocultar el campo de teléfono y mostrar el campo de OTP
+        document.getElementById('divBtnSendSMS').style.display = 'none';
+        document.getElementById('divtoken').style.display = 'block';
 
-      // Mostrar el toast de confirmación
-      const toastElement = document.getElementById('myToast');
-      const toast = new bootstrap.Toast(toastElement);
-      toast.show();
+        // Mostrar el toast de confirmación
+        showToast("Código Enviado", "El código ha sido enviado a tu teléfono.", "Hace unos segundos");
+      }, 2000); // Simula un tiempo de espera para el envío
     }
+
 
     function Validate() {
-      const otpInput = document.getElementById('txtToken');
-      const otpCode = otpInput.value;
+      const otpCode = document.getElementById('txtToken').value;
 
-      if (otpCode === '999999') {
-        // Redirigir a la página de pago si el OTP es correcto
-        window.location.href = 'https://xdaniel17.github.io/Tesis-Prototipo-Pasarela-Pago.github.io/Module/Pay.html';
-      } else {
-        // Si el OTP es incorrecto, mostrar un mensaje de error en el toast
-        document.getElementById('toastTitle').textContent =
-          'Código Incorrecto';
-        document.getElementById('toastMessage').textContent =
-          'El código ingresado no es correcto. Por favor, intenta nuevamente.';
-        const toastElement = document.getElementById('myToast');
-        const toast = new bootstrap.Toast(toastElement);
-        toast.show();
-      }
+      // Mostrar el loader mientras se valida el OTP
+      showLoader();
+
+      setTimeout(() => {
+        hideLoader();
+
+        // Verificar si el OTP es correcto
+        if (otpCode === '999999') {
+          window.location.href = '/module/pay.html'; // Redirige a la página de pago
+        } else {
+          // Si el OTP es incorrecto, muestra un toast de error
+          showToast("Código Incorrecto", "El código ingresado no es correcto. Por favor, intenta nuevamente.", "Hace unos segundos");
+        }
+      }, 2000); // Simula un tiempo de espera para la validación
     }
+
   </script>
 
 </body>
