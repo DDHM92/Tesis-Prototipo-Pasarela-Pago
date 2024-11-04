@@ -163,22 +163,21 @@ h6 {
 
 @media (max-width: 767px) {
   .kgp-title {
-    font-size: 1.0em;
+    font-size: 1em;
   }
 
   .kgp-sub-title {
-    font-size: 0.85em;
+    font-size: 0.9em;
   }
 
   .kgp-body {
-    font-size: 0.8em;
+    font-size: 0.85em;
   }
 
   .kgp-little {
-    font-size: 0.7em;
+    font-size: 0.75em;
   }
 }
-
 
 .logo-comercio {
 	width: 100px;
