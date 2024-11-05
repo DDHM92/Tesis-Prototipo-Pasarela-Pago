@@ -199,4 +199,6 @@ function cargarCarritoAleatorio() {
 }
 
 // Ejecutar la función al cargar la página
-window.onload = cargarCarritoAleatorio;
+//window.onload = cargarCarritoAleatorio;
+document.addEventListener("DOMContentLoaded", cargarCarritoAleatorio);
+
