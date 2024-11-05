@@ -177,13 +177,25 @@ function cargarCarritoAleatorio() {
   </div>
   `;
 
-  // Insertar el HTML en los contenedores
-  document.getElementById('contenedor-carrito-desktop').innerHTML = carritoHTML;
-  document.getElementById('contenedor-carrito-movil').innerHTML = carritoHTML;
-  
-  // Establecer la URL del logo
-  document.getElementById("imgLogoEscritorio").src = comercioAleatorio.logo;
-  document.getElementById('lblPostAmount').textContent = total.toFixed(2);
+  // Insertar el HTML en los contenedores solo si existen los elementos
+  if (document.getElementById('contenedor-carrito-desktop')) {
+    document.getElementById('contenedor-carrito-desktop').innerHTML = carritoHTML;
+  }
+
+  if (document.getElementById('contenedor-carrito-movil')) {
+    document.getElementById('contenedor-carrito-movil').innerHTML = carritoHTML;
+  }
+
+  // Establecer la URL del logo solo si existe el elemento
+  if (document.getElementById("imgLogoEscritorio")) {
+    document.getElementById("imgLogoEscritorio").src = comercioAleatorio.logo;
+  }
+
+  // Actualizar el texto de lblPostAmount solo si existe el elemento
+  if (document.getElementById('lblPostAmount')) {
+    document.getElementById('lblPostAmount').textContent = total.toFixed(2);
+  }
+
 }
 
 // Ejecutar la función al cargar la página
