@@ -908,7 +908,7 @@
                           </a>
                         </div>
                         <div class="col">
-                          <a class="btn btn-success mb-3"
+                          <a class="btn btn-success mb-3" id="lnkBillingInfo_Save"
                             href="https://xdaniel17.github.io/Tesis-Prototipo-Pasarela-Pago.github.io/Module/Pay.html">
                             Guardar
                           </a>
@@ -1072,6 +1072,25 @@
       // Actualizar el logo después de cambiar el tema
       updateLogoBasedOnTheme();
     }
+
+    document.getElementById('lnkBillingInfo_Save').addEventListener('click', function (event) {
+      event.preventDefault(); // Previene la navegación inmediata
+
+      // Muestra el loader
+      showLoader();
+
+      // Simula un tiempo de espera para la confirmación
+      setTimeout(() => {
+        hideLoader();
+
+        // Muestra el toast de confirmación
+        showToast("Método Guardado", "El nuevo método de pago ha sido guardado exitosamente.", "Hace unos segundos");
+
+        // Opcional: Si deseas redirigir después de mostrar el mensaje
+        window.location.href = 'https://xdaniel17.github.io/Tesis-Prototipo-Pasarela-Pago.github.io/Module/Pay.html';
+      }, 2000); // Simula un tiempo de espera
+    });
+
   </script>
 
 </body>

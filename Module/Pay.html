@@ -259,7 +259,7 @@
 
               <div class="row text-center mt-1">
                 <div class="col-12 mt-2">
-                  <a id="lnkBillingInfo_Save" class="btn btn-success">
+                  <a id="lnkcompleteOrder" class="btn btn-success">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                       class="bi bi-bag-check" viewBox="0 0 16 16">
                       <path fill-rule="evenodd"
@@ -427,7 +427,7 @@
       updateLogoBasedOnTheme();
     }
 
-    document.getElementById('lnkBillingInfo_Save').addEventListener('click', function (event) {
+    document.getElementById('lnkcompleteOrder').addEventListener('click', function (event) {
       event.preventDefault(); // Previene la navegación inmediata
 
       // Muestra el loader
@@ -438,7 +438,7 @@
         hideLoader();
 
         // Muestra el toast de confirmación
-        showToast("Método Guardado", "El nuevo método de pago ha sido guardado exitosamente.", "Hace unos segundos");
+        showToast("Método Guardado", "Tu Compra se ha realizado exitosamente", "Hace unos segundos");
 
         // Opcional: Si deseas redirigir después de mostrar el mensaje
         window.location.href = 'https://xdaniel17.github.io/Tesis-Prototipo-Pasarela-Pago.github.io/Module/Pay.html';
