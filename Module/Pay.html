@@ -84,7 +84,7 @@
             <div id="contenedor-carrito-desktop" class="container text-center"></div>
           </section>
         </div>
-        <div class="col-6">
+        <div class="col-6 col-auto col-md-6">
           <section>
             <div class="container text-center py-2">
               <div class="row">
@@ -158,7 +158,7 @@
                     <span>Información de envío:</span>
                   </div>
                   <div class="input-group mb-2">
-                    <span class="input-group-text" id="basic-addon_Shipping" onclick="clickShippingLinkButton();">
+                    <span class="input-group-text" id="basic-addon_Shipping">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-calendar-week-fill" viewBox="0 0 16 16">
                         <path
@@ -169,22 +169,10 @@
                     <select name="ctl00$MainContent$ddlShippingAddress" id="MainContent_ddlShippingAddress" type="text"
                       class="form-control" aria-describedby="basic-addon_Shipping">
                       <option value="6">Oficina</option>
-                      <option value="87">Test 2`</option>
-                      <option value="88">test 3</option>
-                      <option value="217">Test</option>
-                      <option value="218">Test</option>
-                      <option value="219">Tegsv</option>
-                      <option value="220">Teat</option>
-                      <option value="221">Prueba prueba</option>
-                      <option value="222">Test</option>
-                      <option value="223">Test</option>
-                      <option value="228">testt</option>
-                      <option value="229">testte</option>
-                      <option value="244">Tesg</option>
-                      <option selected="selected" value="245">Test 1/03</option>
+                      <option selected="selected" value="245">Casa</option>
 
                     </select>
-                    <span class="input-group-text" onclick="clickShippingLinkButton();">
+                    <span class="input-group-text">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
                         <path fill-rule="evenodd"
@@ -197,7 +185,7 @@
                     <div class="col-6"></div>
                     <div class="col-6">
                       <a id="MainContent_lnkShippingAddress" class="text-end"
-                        href="javascript:__doPostBack('ctl00$MainContent$lnkShippingAddress','')">Agregar dirección</a>
+                        href="https://xdaniel17.github.io/Tesis-Prototipo-Pasarela-Pago.github.io/Module/Shipping/AddShipping.html">Agregar dirección</a>
                     </div>
                   </div>
                 </div>
@@ -218,7 +206,6 @@
                         </svg>
                       </span>
                       <select name="ctl00$MainContent$DropDownListPaymentType"
-                        onchange="showProgress();setTimeout('__doPostBack(\'ctl00$MainContent$DropDownListPaymentType\',\'\')', 0)"
                         id="MainContent_DropDownListPaymentType" class="form-control"
                         aria-describedby="basic-addon_PaymentType">
                         <option selected="selected" value="74">Tarjeta de Crédito</option>
@@ -264,7 +251,7 @@
                       <div class="col-7"></div>
                       <div class="col-5">
                         <a id="MainContent_lnkAddCard" class="text-end"
-                          href="javascript:__doPostBack('ctl00$MainContent$lnkAddCard','')">Agregar tarjeta</a>
+                          href="https://xdaniel17.github.io/Tesis-Prototipo-Pasarela-Pago.github.io/Module/Billing/AddBilling.html">Agregar tarjeta</a>
                       </div>
                     </div>
                   </section>
