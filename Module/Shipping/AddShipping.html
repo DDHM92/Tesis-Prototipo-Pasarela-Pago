@@ -86,13 +86,6 @@
         </div>
         <div class="col-6 col-12 col-md-6">
           <section>
-            <div class="container text-center py-2">
-              <div class="row">
-                <div class="col">
-                  <img class="rounded logo-comercio" alt="Logo comercio" id="imgLogoEscritorio">
-                </div>
-              </div>
-            </div>
             <div class="container text-center pt-4" id="divLblAmount">
               <section name="contendor derecho" class="mt-1 mb-3">
                 <div class="container text-center">
@@ -436,6 +429,24 @@
       // Actualizar el logo después de cambiar el tema
       updateLogoBasedOnTheme();
     }
+
+    document.getElementById('lnkShippingInfo_Save').addEventListener('click', function (event) {
+      event.preventDefault(); // Previene la navegación inmediata
+
+      // Muestra el loader
+      showLoader();
+
+      // Simula un tiempo de espera para la confirmación
+      setTimeout(() => {
+        hideLoader();
+
+        // Muestra el toast de confirmación
+        showToast("Método Guardado", "La nueva dirección se ha guardado exitosamente.", "Hace unos segundos");
+
+        // Opcional: Si deseas redirigir después de mostrar el mensaje
+        window.location.href = 'https://xdaniel17.github.io/Tesis-Prototipo-Pasarela-Pago.github.io/Module/Pay.html';
+      }, 2000); // Simula un tiempo de espera
+    });
   </script>
 
 </body>
