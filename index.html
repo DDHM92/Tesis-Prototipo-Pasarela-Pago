@@ -6,15 +6,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" href="/Tesis-Prototipo-Pasarela-Pago.github.io/src/Image/favicon.ico" type="image/x-icon" />
-  <script type="module" src="https://xdaniel17.github.io/Tesis-Prototipo-Pasarela-Pago.github.io/src/index.js"></script>
+  <script>
+    var developmentmode = true; // o false, según la necesidad de la página
+  </script>
+  <script>
+    // Determina la ruta base según el modo
+    var basePath = developmentmode
+      ? "./src/"  // Ruta local si developmentmode = true
+      : "https://xdaniel17.github.io/Tesis-Prototipo-Pasarela-Pago.github.io/src/"; // Ruta remota si = false
+    // Carga los recursos propios en función del modo
+    document.write('<script type="module" src="' + basePath + 'common-ui.js"><\/script>');
+    document.write('<script src="' + basePath + 'general.js"><\/script>');
+    document.write('<script type="module" src="' + basePath + 'shopping-cart.js"><\/script>');
+    document.write('<script type="module" src="' + basePath + 'layout-components.js"><\/script>');
+    document.write('<link rel="stylesheet" href="' + basePath + 'styles.css">');
+    //document.getElementById('faviconLink').href = basePath + 'Image/favicon.ico';
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://xdaniel17.github.io/Tesis-Prototipo-Pasarela-Pago.github.io/src/styles.css" />
-
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet" />
-
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
     crossorigin="anonymous" />
@@ -24,84 +36,13 @@
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-
-  <script>
-
-    // Función para mostrar el loader
-    function showLoader() {
-      const overlay = document.getElementById('loadingOverlay');
-      overlay.style.display = 'flex'; // Muestra el overlay
-    }
-
-    // Función para ocultar el loader
-    function hideLoader() {
-      const overlay = document.getElementById('loadingOverlay');
-      overlay.style.display = 'none'; // Oculta el overlay
-    }
-
-    // Función para mostrar el toast notification
-    function showToast(title, message, time) {
-      const toastTitle = document.getElementById('toastTitle');
-      const toastMessage = document.getElementById('toastMessage');
-      const toastTime = document.getElementById('toastTime');
-
-      // Actualiza el contenido del toast
-      toastTitle.textContent = title;
-      toastMessage.textContent = message;
-      toastTime.textContent = "Hace unos segundos";
-
-      // Muestra el toast
-      const toastElement = new bootstrap.Toast(document.getElementById('myToast'));
-      toastElement.show();
-    }
-
-    // Función para mostrar el popup modal
-    function showModalPopup(title, message) {
-      const modalTitle = document.getElementById('myModalPopupLabel');
-      const modalBody = document.querySelector('#myModalPopup .modal-body');
-
-      // Actualiza el contenido del modal
-      modalTitle.textContent = title;
-      modalBody.textContent = message;
-
-      // Muestra el modal
-      const modalElement = new bootstrap.Modal(document.getElementById('myModalPopup'));
-      modalElement.show();
-    }
-  </script>
-
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg fixed-top" id="navbar">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="Default.html">Prototipo Pasarela Pago</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-        aria-controls="offcanvasNavbar">
-        <span class="navbar-toggler-icon"></span>
-      </button>
 
-      <div class="offcanvas offcanvas-start custom-offcanvas" tabindex="-1" id="offcanvasNavbar"
-        aria-labelledby="offcanvasNavbarLabel">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Carrito</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-          <div class="nav-item px-0">
-            <div class="card px-0 py-5 shadow d-block d-md-none">
-              <div id="contenedor-carrito-movil" class="container text-center"></div>
-            </div>
-            <button id="toggle-dark-mode" class="btn btn-light" onclick="toggleDarkMode(); return false;">
-              <span id="theme-icon" class="bi bi-sun-fill"></span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </nav>
+  <my-header></my-header>
 
-  <main class="flex-grow-1">
+  <div class="flex-grow-1">
     <div class="container pt-4 mt-5">
       <div class="row justify-content-center justify-content-md-between pt-4">
         <div class="col-6 d-none d-md-block">
@@ -110,7 +51,7 @@
           </section>
         </div>
         <div class="col-6 col-12 col-md-6">
-          <section>
+          <main id="PageBody">
             <div class="container text-center py-2">
               <div class="row">
                 <div class="col">
@@ -119,31 +60,25 @@
               </div>
             </div>
             <div class="container text-center pt-4" id="divLblAmount">
-              <h4>
+              <h5>
                 Monto a pagar $<strong id="lblPostAmount">40.00</strong>
-              </h4>
+              </h5>
             </div>
             <div class="container text-center pt-5">
               <div class="row text-center mx-auto" id="divPhone">
                 <div class="col-12 d-flex justify-content-center">
                   <div class="form-floating" id="divBtnSendSMS">
-                    <input type="tel" class="form-control text-center" id="txtPhone" placeholder="Número celular"
-                      pattern="[0-9]*" required />
+                    <input type="tel" class="form-control" id="txtPhone" placeholder="Número celular" pattern="[0-9]*"
+                      required />
                     <label for="txtPhone">Número celular</label>
                   </div>
                 </div>
                 <div class="col-12 mt-5 mb-2">
                   <button type="button" id="BtnSendHsm" onclick="enviarCodigo();" class="btn btn-success mb-3">
-                    Validar
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                      class="bi bi-whatsapp" viewBox="0 0 16 16">
-                      <path
-                        d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z" />
-                    </svg>
+                    Enviar código de verificación
                   </button>
                 </div>
               </div>
-
               <div id="divtoken" class="my-2" style="display: none">
                 <div class="row text-center">
                   <label class="form-label kgp-body" id="LblPhoneMessage">Hemos enviado un código a tu teléfono</label>
@@ -166,123 +101,15 @@
                 </div>
               </div>
             </div>
-          </section>
-
-        </div>
-      </div>
-    </div>
-  </main>
-
-
-  <div class="container-fluid pt-4 px-0">
-    <footer class="text-center text-lg-start">
-      <div class="container">
-        <div class="row mt-2">
-          <div class="col-lg-4 col-md-12 mb-1 mb-md-0">
-            <div class="mt-2">
-              <a class="btn btn-floating" target="_blank" href="https://www.facebook.com/"><i
-                  class="bi bi-whatsapp"></i></a>
-              <a class="btn btn-floating" target="_blank" href="https://www.facebook.com/"><i
-                  class="bi bi-facebook"></i></a>
-              <a class="btn btn-floating" target="_blank" href="https://www.instagram.com/"><i
-                  class="bi bi-instagram"></i></a>
-              <a class="btn btn-floating" target="_blank" href="https://www.instagram.com/"><i
-                  class="bi bi-youtube"></i></a>
-            </div>
-            <div class="footer-links mt-2">
-              <a href="About.html">Acerca de nosotros</a> /
-              <a href="Contact.html">Contáctanos</a>
-            </div>
-            <p class="mt-3">
-              &copy;
-              <script>
-                document.write(new Date().getFullYear());
-              </script>
-              - Prototipo Pasarela Pago
-            </p>
-          </div>
-          <div class="col-lg-4 col-md-6 mb-1 mb-md-0 d-none d-md-block">
-            <h5 class="text-uppercase mb-2 pb-1">Contáctanos</h5>
-            <ul class="list-unstyled">
-              <li class="mb-3">
-                <span class="fa-li"><i class="bi bi-house-fill"></i></span>
-                <span class="ms-2">San Salvador, El Salvador</span>
-              </li>
-              <li class="mb-3">
-                <span class="fa-li"><i class="bi bi-envelope-fill"></i></span>
-                <span class="ms-2">contact@sivarsportsacademy.com</span>
-              </li>
-              <li class="mb-3">
-                <span class="fa-li"><i class="bi bi-telephone-fill"></i></span>
-                <span class="ms-2">+503 2345 6789</span>
-              </li>
-            </ul>
-          </div>
-          <div class="col-lg-4 col-md-6 mb-1 mb-md-0 d-none d-md-block">
-            <h5 class="text-uppercase mb-2 text-center">Horario de atención</h5>
-            <div class="row text-center g-2">
-              <div class="col-6">
-                <span>Lun - Jue:</span>
-              </div>
-              <div class="col-6">
-                8am - 9pm
-              </div>
-              <div class="col-6">
-                <span>Vie - Sáb:</span>
-              </div>
-              <div class="col-6">
-                8am - 1am
-              </div>
-              <div class="col-6">
-                <span>Domingo:</span>
-              </div>
-              <div class="col-6">
-                9am - 10pm
-              </div>
-            </div>
-          </div>
-        </div>
-    </footer>
-  </div>
-
-  <div id="loadingOverlay" class="loading-overlay">
-    <div class="spinner-border" role="status">
-      <span class="visually-hidden">Loading...</span>
-    </div>
-  </div>
-
-  <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1055">
-    <div id="myToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-      <div class="toast-header">
-        <strong id="toastTitle" class="me-auto">Título del Toast</strong>
-        <small id="toastTime">Hace un momento</small>
-        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-      </div>
-      <div class="toast-body" id="toastMessage">
-        Este es el mensaje del toast.
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="myModalPopup" tabindex="-1" aria-labelledby="myModalPopupLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="myModalPopupLabel">Título del Popup</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">Aquí va el contenido del popup.</div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-            Cerrar
-          </button>
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
-            Aceptar
-          </button>
+          </main>
         </div>
       </div>
     </div>
   </div>
+
+  <my-footer></my-footer>
+
+  <my-common-ui></my-common-ui>
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
     integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
@@ -292,70 +119,35 @@
     crossorigin="anonymous"></script>
 
   <script>
-    // Función para alternar entre modos claro y oscuro
-    function toggleDarkMode() {
-      const htmlElement = document.documentElement;
-      const themeIcon = document.getElementById('theme-icon');
-      const button = document.getElementById('toggle-dark-mode');
-      //const themeField = document.getElementById('<%= hfTheme.ClientID %>'); // HiddenField
-
-      let newTheme;
-      if (htmlElement.getAttribute('data-bs-theme') === 'light') {
-        htmlElement.setAttribute('data-bs-theme', 'dark');
-        themeIcon.classList.replace('bi-sun-fill', 'bi-moon-fill');
-        button.classList.replace('btn-light', 'btn-dark');
-        newTheme = 'dark';
-      } else {
-        htmlElement.setAttribute('data-bs-theme', 'light');
-        themeIcon.classList.replace('bi-moon-fill', 'bi-sun-fill');
-        button.classList.replace('btn-dark', 'btn-light');
-        newTheme = 'light';
-      }
-
-      // Almacenar el tema seleccionado en localStorage
-      localStorage.setItem('theme', newTheme);
-      // Actualizar el valor del HiddenField
-      //themeField.value = newTheme;
-
-      // Actualizar el logo después de cambiar el tema
-      updateLogoBasedOnTheme();
-    }
 
     function enviarCodigo() {
       const phoneInput = document.getElementById('txtPhone').value;
-
       // Validar que el número de teléfono cumpla con el formato
       const isValidPhone = /^(7|8)\d{7}$|^503(7|8)\d{7}$/.test(phoneInput);
       if (!isValidPhone) {
         showToast("Número inválido", "Por favor, ingrese un número de teléfono válido.", "Hace unos segundos");
         return;
       }
-
       // Mostrar loader mientras se envía el código
       showLoader();
-
       // Simulación de envío de código con un delay
       setTimeout(() => {
         hideLoader();
         // Ocultar el campo de teléfono y mostrar el campo de OTP
         document.getElementById('divPhone').style.display = 'none';
         document.getElementById('divtoken').style.display = 'block';
-
         // Mostrar el toast de confirmación
         showToast("Código Enviado", "El código ha sido enviado a tu teléfono.", "Hace unos segundos");
-      }, 2000); // Simula un tiempo de espera para el envío
+      }, 1000); // Simula un tiempo de espera para el envío
     }
 
 
     function Validate() {
       const otpCode = document.getElementById('txtToken').value;
-
       // Mostrar el loader mientras se valida el OTP
       showLoader();
-
       setTimeout(() => {
         hideLoader();
-
         // Verificar si el OTP es correcto
         if (otpCode === '999999') {
           showToast("Código Correcto", "El código ingresado es correcto.", "Hace unos segundos");
@@ -364,7 +156,7 @@
           // Si el OTP es incorrecto, muestra un toast de error
           showToast("Código Incorrecto", "El código ingresado no es correcto. Por favor, intenta nuevamente.", "Hace unos segundos");
         }
-      }, 2000); // Simula un tiempo de espera para la validación
+      }, 1000); // Simula un tiempo de espera para la validación
     }
 
   </script>

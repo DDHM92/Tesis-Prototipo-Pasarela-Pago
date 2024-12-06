@@ -12,6 +12,7 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
+  font-size: 1em;
 }
 
 .dropdown-submenu {
@@ -29,18 +30,21 @@ form {
   font-family: 'Poppins', sans-serif;
   display: flex;
   flex-direction: column;
-  flex-grow: 1; /* Esto permite que el contenido crezca */
+  flex-grow: 1;
+  /* Esto permite que el contenido crezca */
 }
 
 /* Estilos para modo claro */
 #navbar {
   font-family: 'Poppins', sans-serif;
-  background-color: #ffffff; /* Color sólido para modo claro */
+  background-color: #ffffff;
+  /* Color sólido para modo claro */
 }
 
 /* Estilos para modo oscuro */
 [data-bs-theme='dark'] #navbar {
-  background-color: #343a40; /* Color sólido para modo oscuro */
+  background-color: #343a40;
+  /* Color sólido para modo oscuro */
 }
 
 footer {
@@ -49,16 +53,19 @@ footer {
   padding: 0.5rem 0;
   width: 100%;
   text-align: center;
-  color: #000; /* Texto negro por defecto */
+  color: #000;
+  /* Texto negro por defecto */
   transition: background-color 0.3s, color 0.3s;
 }
 
 .footer-links a {
-  text-decoration: none; /* Quitar subrayado */
+  text-decoration: none;
+  /* Quitar subrayado */
 }
 
 .footer-links a:hover {
-  text-decoration: underline; /* Subrayar al pasar el mouse */
+  text-decoration: underline;
+  /* Subrayar al pasar el mouse */
 }
 
 /* Estilos dinámicos del footer en modo oscuro */
@@ -109,7 +116,8 @@ strong {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-top: 5rem; /* Ajuste para compensar el espacio de la navbar fija */
+  padding-top: 5rem;
+  /* Ajuste para compensar el espacio de la navbar fija */
 }
 
 .logo {
@@ -126,12 +134,15 @@ strong {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semi-transparente */
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Fondo oscuro semi-transparente */
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1050; /* Asegura que esté por encima de otros elementos */
-  display: none; /* Oculto por defecto */
+  z-index: 1050;
+  /* Asegura que esté por encima de otros elementos */
+  display: none;
+  /* Oculto por defecto */
 }
 
 /* Tamaño del spinner */
@@ -141,6 +152,7 @@ strong {
 }
 
 @media (min-width: 768px) {
+
   /* Spinner más grande en pantallas más grandes */
   .spinner-border {
     width: 5rem;
@@ -150,18 +162,22 @@ strong {
 
 /* Estilo personalizado para el offcanvas */
 .custom-offcanvas {
-  width: 83% !important; /* Cambia este valor según sea necesario */
+  width: 83% !important;
+  /* Cambia este valor según sea necesario */
 }
 
 @media (min-width: 768px) {
   .custom-offcanvas {
-    width: 250px !important; /* Ancho para pantallas más grandes */
+    width: 250px !important;
+    /* Ancho para pantallas más grandes */
   }
 }
 
 .offcanvas-backdrop {
-  opacity: 0 !important; /* Evita que la oscuridad persista */
-  pointer-events: none; /* Deshabilita los eventos en el backdrop */
+  opacity: 0 !important;
+  /* Evita que la oscuridad persista */
+  pointer-events: none;
+  /* Deshabilita los eventos en el backdrop */
 }
 
 @media (max-width: 767px) {
@@ -183,11 +199,11 @@ strong {
 }
 
 .logo-comercio {
-	width: 100px;
-	/*height: 100px;*/
+  width: 70px;
+  /*height: 100px;*/
 }
 
 .shoppingCart-productImage {
-	width: 65px;
-	height: 65px;
+  width: 50px;
+  height: 50px;
 }
