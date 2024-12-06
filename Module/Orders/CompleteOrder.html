@@ -2,87 +2,126 @@
 <html lang="en">
 
 <head>
-    <title>Compra Finalizada - Prototipo Pasarela de Pago</title>
+    <title>Prototipo Pasarela de pago</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <script>
+        var developmentmode = true; // o false, según la necesidad de la página
+    </script>
+    <script>
+        // Determina la ruta base según el modo
+        var basePath = developmentmode
+            ? "../../src/" // Ruta local si developmentmode = true
+            : "https://xdaniel17.github.io/Tesis-Prototipo-Pasarela-Pago.github.io/src/"; // Ruta remota si = false
+
+        document.write('<script type="module" src="' + basePath + 'common-ui.js"><\/script>');
+        document.write('<script src="' + basePath + 'general.js"><\/script>');
+        document.write('<script type="module" src="' + basePath + 'shopping-cart.js"><\/script>');
+        document.write('<script type="module" src="' + basePath + 'layout-components.js"><\/script>');
+        document.write('<link rel="stylesheet" href="' + basePath + 'styles.css">');
+    </script>
+
     <link rel="icon" href="/Tesis-Prototipo-Pasarela-Pago.github.io/src/Image/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" crossorigin="anonymous" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap"
+        rel="stylesheet" />
+
+    <!-- Bootstrap CSS & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        crossorigin="anonymous" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css"
+        rel="stylesheet" />
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg fixed-top" id="navbar">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="Default.html">Prototipo Pasarela Pago</a>
-        </div>
-    </nav>
+    <my-header></my-header>
 
+    <!-- Contenido Principal -->
     <main class="flex-grow-1">
-        <div class="container pt-4 mt-5">
-            <h1 class="text-center">¡Gracias por tu compra!</h1>
-            <h3 class="text-center">Tu compra ha sido finalizada correctamente.</h3>
+        <div class="container pt-5 mt-5">
+            <div class="text-center mb-5">
+                <i class="bi bi-check-circle-fill text-success" style="font-size: 4rem;"></i>
+                <h1 class="mt-3 fw-bold">¡Gracias por tu compra!</h1>
+                <h4 class="text-muted">Tu transacción se ha completado exitosamente.</h4>
+            </div>
+
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <h5 class="card-title text-center mb-4">Resumen de la Compra</h5>
+                    <p class="text-center mb-2">
+                        <strong>Número de Orden:</strong> <span class="text-primary fw-semibold">#123456</span>
+                    </p>
+                    <p class="text-center mb-4">
+                        <strong>Estado de la Orden:</strong> <span class="text-success fw-semibold">Ingresada</span>
+                    </p>
+
+                    <table class="table table-borderless text-center mb-4">
+                        <thead class="border-bottom">
+                            <tr>
+                                <th>Producto</th>
+                                <th>Cantidad</th>
+                                <th>Precio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Producto 1</td>
+                                <td>1</td>
+                                <td>$20.00</td>
+                            </tr>
+                            <tr>
+                                <td>Producto 2</td>
+                                <td>1</td>
+                                <td>$20.00</td>
+                            </tr>
+                        </tbody>
+                        <tfoot class="border-top">
+                            <tr>
+                                <td colspan="2" class="text-end">Total:</td>
+                                <td><strong>$40.00</strong></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                    <div class="mb-3">
+                        <strong><i class="bi bi-geo-alt-fill text-danger"></i> Información de Envío:</strong> <br />
+                        <span class="text-muted">Av. Las Magnolias 206, San Salvador, El Salvador</span>
+                    </div>
+
+                    <div class="mb-3">
+                        <strong><i class="bi bi-credit-card-fill text-primary"></i> Método de Pago:</strong> <br />
+                        <span class="text-muted">Tarjeta de Crédito: VISA-***1111</span>
+                    </div>
+                </div>
+            </div>
+
             <div class="text-center mt-4">
-                <h4>Número de Orden: <strong>#123456</strong></h4>
-                <p>Estado de la Orden: <strong>Ingresada</strong></p>
-            </div>
-
-            <div class="mt-5">
-                <h5>Resumen de la Compra:</h5>
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Producto</th>
-                            <th>Cantidad</th>
-                            <th>Precio</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Producto 1</td>
-                            <td>1</td>
-                            <td>$20.00</td>
-                        </tr>
-                        <tr>
-                            <td>Producto 2</td>
-                            <td>1</td>
-                            <td>$20.00</td>
-                        </tr>
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="2" class="text-end"><strong>Total:</strong></td>
-                            <td>$40.00</td>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
-
-            <div class="mt-4">
-                <h5>Información de Envío:</h5>
-                <p>Dirección: Casa</p>
-                <p>Ubicación: San Salvador, El Salvador</p>
-            </div>
-
-            <div class="mt-4">
-                <h5>Método de Pago:</h5>
-                <p>Tarjeta de Crédito - VISA - ***1111</p>
-            </div>
-
-            <div class="mt-5 text-center">
-                <a href="https://xdaniel17.github.io/Tesis-Prototipo-Pasarela-Pago.github.io/Module/Orders/OrderHistory.html" class="btn btn-primary">Ver historial de ordenes</a>
+                <a id="btnOrderHistory" href="#" class="btn btn-primary">
+                    <i class="bi bi-clock-history"></i> Ver historial de órdenes
+                </a>
             </div>
         </div>
     </main>
 
-    <footer class="text-center text-lg-start mt-5">
-        <div class="container">
-            <p class="mt-3">
-                &copy; <script>document.write(new Date().getFullYear());</script> - Prototipo Pasarela Pago
-            </p>
-        </div>
-    </footer>
+    <my-footer></my-footer>
+    <my-common-ui></my-common-ui>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const linkAddCard = document.getElementById('btnOrderHistory');
+            if (linkAddCard) {
+                linkAddCard.href = basePath + '../Module/Orders/OrderHistory.html';
+            }
+        });
+    </script>
 </body>
 
 </html>

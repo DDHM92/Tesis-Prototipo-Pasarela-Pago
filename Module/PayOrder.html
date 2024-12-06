@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" href="/Tesis-Prototipo-Pasarela-Pago.github.io/src/Image/favicon.ico" type="image/x-icon" />
   <script>
-    var developmentmode = false; // o false, según la necesidad de la página
+    var developmentmode = true; // o false, según la necesidad de la página
   </script>
   <script>
     // Determina la ruta base según el modo
@@ -60,9 +60,9 @@
               </div>
             </div>
             <div class="container text-center pt-4" id="divLblAmount">
-              <h4>
+              <h5>
                 Monto a pagar $<strong id="lblPostAmount">40.00</strong>
-              </h4>
+              </h5>
             </div>
             <div class="container text-center pt-5">
               <!-- Aquí permanece el formulario y campos específicos de esta página -->
@@ -207,7 +207,7 @@
       setTimeout(() => {
         hideLoader();
         showToast("Método Guardado", "Tu Compra se ha realizado exitosamente", "Hace unos segundos");
-        window.location.href = basePath + 'Module/Pay.html';
+        window.location.href = basePath + '../Module/Orders/CompleteOrder.html';
       }, 2000);
     });
   </script>
