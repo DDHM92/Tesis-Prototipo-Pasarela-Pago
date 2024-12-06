@@ -6,21 +6,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" href="/Tesis-Prototipo-Pasarela-Pago.github.io/src/Image/favicon.ico" type="image/x-icon" />
-
   <script>
-    var developmentmode = true; // o false, según la necesidad de la página
-    var basePath = developmentmode
-      ? "./src/"  // Ruta local si developmentmode = true
-      : "https://xdaniel17.github.io/Tesis-Prototipo-Pasarela-Pago.github.io/src/"; // Ruta remota si = false
+    var developmentmode = false; // o false, según la necesidad de la página
   </script>
-
-  <!-- Carga los recursos propios -->
-  <script type="module" src="${basePath}common-ui.js"></script>
-  <script src="${basePath}general.js"></script> <!-- Aquí están showToast, showLoader, etc. en global -->
-  <script type="module" src="${basePath}shopping-cart.js"></script>
-  <script type="module" src="${basePath}layout-components.js"></script>
-  <link rel="stylesheet" href="${basePath}styles.css">
-
+  <script>
+    // Determina la ruta base según el modo
+    var basePath = developmentmode
+      ? "../src/"  // Ruta local si developmentmode = true
+      : "https://xdaniel17.github.io/Tesis-Prototipo-Pasarela-Pago.github.io/src/"; // Ruta remota si = false
+    // Carga los recursos propios en función del modo
+    document.write('<script type="module" src="' + basePath + 'common-ui.js"><\/script>');
+    document.write('<script src="' + basePath + 'general.js"><\/script>');
+    document.write('<script type="module" src="' + basePath + 'shopping-cart.js"><\/script>');
+    document.write('<script type="module" src="' + basePath + 'layout-components.js"><\/script>');
+    document.write('<link rel="stylesheet" href="' + basePath + 'styles.css">');
+    //document.getElementById('faviconLink').href = basePath + 'Image/favicon.ico';
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -33,13 +34,12 @@
     rel="stylesheet" />
 
   <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body>
 
-  <!-- Reemplaza el nav y footer por componentes -->
   <my-header></my-header>
 
   <div class="flex-grow-1">
@@ -76,32 +76,35 @@
                     <span class="input-group-text" id="basic-addon_FullName">
                       <i class="bi bi-person-circle"></i>
                     </span>
-                    <input name="ctl00$MainContent$txtFullName" value="Maria Lopez" id="MainContent_txtFullName" type="text"
-                      class="form-control" placeholder="Nombre Completo" aria-describedby="basic-addon_FullName">
+                    <input name="ctl00$MainContent$txtFullName" value="Maria Lopez" id="txtFullName"
+                      type="text" class="form-control" placeholder="Nombre Completo"
+                      aria-describedby="basic-addon_FullName">
                   </div>
                   <div class="input-group mb-2">
                     <span class="input-group-text" id="basic-addon_Email"><i class="bi bi-envelope"></i></span>
-                    <input name="ctl00$MainContent$txtEmail" value="test@test.com" id="MainContent_txtEmail" type="email"
-                      class="form-control" placeholder="Correo Electronico" aria-describedby="basic-addon_Email">
+                    <input name="ctl00$MainContent$txtEmail" value="test@test.com" id="txtEmail"
+                      type="email" class="form-control" placeholder="Correo Electronico"
+                      aria-describedby="basic-addon_Email">
                   </div>
                   <fieldset disabled="">
                     <div class="input-group mb-2">
                       <span class="input-group-text" id="basic-addon_Phone"><i class="bi bi-phone"></i></span>
-                      <input name="ctl00$MainContent$txtPhone" value="50377471284" id="MainContent_txtPhone" type="tel"
+                      <input name="ctl00$MainContent$txtPhone" value="50377471284" id="txtPhone" type="tel"
                         class="form-control" placeholder="Telefono" aria-describedby="basic-addon_Phone">
                     </div>
                   </fieldset>
                 </div>
               </div>
 
-              <div id="MainContent_divShippingInfo" class="row text-center">
+              <div id="divShippingInfo" class="row text-center">
                 <div class="col">
                   <div class="row mb-1 text-start">
                     <span>Información de envío:</span>
                   </div>
                   <div class="input-group mb-2">
-                    <span class="input-group-text" id="basic-addon_Shipping"><i class="bi bi-calendar-week-fill"></i></span>
-                    <select name="ctl00$MainContent$ddlShippingAddress" id="MainContent_ddlShippingAddress" type="text"
+                    <span class="input-group-text" id="basic-addon_Shipping"><i
+                        class="bi bi-calendar-week-fill"></i></span>
+                    <select name="ctl00$MainContent$ddlShippingAddress" id="ddlShippingAddress" type="text"
                       class="form-control" aria-describedby="basic-addon_Shipping">
                       <option value="6">Oficina</option>
                       <option selected="selected" value="245">Casa</option>
@@ -111,8 +114,8 @@
                   <div class="row text-end">
                     <div class="col-6"></div>
                     <div class="col-6">
-                      <a id="MainContent_lnkShippingAddress" class="text-end"
-                        href="${basePath}Module/Shipping/AddShipping.html">Agregar dirección</a>
+                      <a id="lnkShippingAddress" class="text-end"
+                        href="#">Agregar dirección</a>
                     </div>
                   </div>
                 </div>
@@ -123,20 +126,22 @@
                   <div class="row mb-1 text-start">
                     <span>Método de pago:</span>
                   </div>
-                  <section id="MainContent_sectionContraEntrega">
+                  <section id="sectionContraEntrega">
                     <div class="input-group mb-2">
-                      <span class="input-group-text" id="basic-addon_PaymentType"><i class="bi bi-currency-dollar"></i></span>
-                      <select name="ctl00$MainContent$DropDownListPaymentType" id="MainContent_DropDownListPaymentType"
+                      <span class="input-group-text" id="basic-addon_PaymentType"><i
+                          class="bi bi-currency-dollar"></i></span>
+                      <select name="ctl00$MainContent$DropDownListPaymentType" id="DropDownListPaymentType"
                         class="form-control" aria-describedby="basic-addon_PaymentType">
                         <option selected="selected" value="74">Tarjeta de Crédito</option>
                       </select>
                       <span class="input-group-text"><i class="bi bi-arrow-down-circle"></i></span>
                     </div>
                   </section>
-                  <section id="MainContent_sectionCreditCard">
+                  <section id="sectionCreditCard">
                     <div class="input-group mb-2">
-                      <span class="input-group-text" id="basic-addon_CreditCard"><i class="bi bi-credit-card"></i></span>
-                      <select name="ctl00$MainContent$ddlCreditCard" id="MainContent_ddlCreditCard" type="text"
+                      <span class="input-group-text" id="basic-addon_CreditCard"><i
+                          class="bi bi-credit-card"></i></span>
+                      <select name="ctl00$MainContent$ddlCreditCard" id="ddlCreditCard" type="text"
                         class="form-control" aria-describedby="basic-addon_CreditCard">
                         <option selected="selected" value="1359">VISA - ***1111</option>
                         <option value="1358">VISA - ***1111</option>
@@ -147,8 +152,8 @@
                     <div class="row text-end">
                       <div class="col-7"></div>
                       <div class="col-5">
-                        <a id="MainContent_lnkAddCard" class="text-end"
-                          href="${basePath}Module/Billing/AddBilling.html">Agregar tarjeta</a>
+                        <a id="lnkAddCard" class="text-end"
+                          href="#">Agregar tarjeta</a>
                       </div>
                     </div>
                   </section>
@@ -174,8 +179,25 @@
   <my-common-ui></my-common-ui>
 
   <!-- Popper y Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const linkAddCard = document.getElementById('lnkShippingAddress');
+      if (linkAddCard) {
+        linkAddCard.href = basePath + '../Module/Shipping/AddAdress.html';
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const linkAddCard = document.getElementById('lnkAddCard');
+      if (linkAddCard) {
+        linkAddCard.href = basePath + '../Module/Billing/AddCreditCard.html';
+      }
+    });
+  </script>
 
   <script>
     document.getElementById('lnkcompleteOrder').addEventListener('click', function (event) {
@@ -190,4 +212,5 @@
     });
   </script>
 </body>
+
 </html>

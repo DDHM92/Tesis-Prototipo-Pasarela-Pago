@@ -146,18 +146,26 @@
       const otpCode = document.getElementById('txtToken').value;
       // Mostrar el loader mientras se valida el OTP
       showLoader();
+
       setTimeout(() => {
         hideLoader();
         // Verificar si el OTP es correcto
         if (otpCode === '999999') {
           showToast("Código Correcto", "El código ingresado es correcto.", "Hace unos segundos");
-          window.location.href = 'https://xdaniel17.github.io/Tesis-Prototipo-Pasarela-Pago.github.io/Module/Pay.html';
+
+          // Definir la URL de destino según el modo
+          const payUrl = developmentmode
+            ? basePath + '../Module/PayOrder.html'
+            : 'https://xdaniel17.github.io/Tesis-Prototipo-Pasarela-Pago.github.io/Module/PayOrder.html';
+
+          window.location.href = payUrl;
         } else {
           // Si el OTP es incorrecto, muestra un toast de error
           showToast("Código Incorrecto", "El código ingresado no es correcto. Por favor, intenta nuevamente.", "Hace unos segundos");
         }
       }, 1000); // Simula un tiempo de espera para la validación
     }
+
 
   </script>
 
