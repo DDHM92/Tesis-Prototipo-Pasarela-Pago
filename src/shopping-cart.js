@@ -61,56 +61,56 @@ export function cargarCarritoAleatorio() {
   // Seleccionar comercio aleatorio
   const comercioAleatorio = comercios[Math.floor(Math.random() * comercios.length)];
 
-  // Crear el HTML del carrito basado en el comercio seleccionado
-  let carritoHTML = `
-      <div class="container text-center">
-          <div class="row">
-              <div class="col">
-                  <img id="Image_Logo_Escritorio" class="rounded logo-comercio" alt="Logo comercio" src="${comercioAleatorio.logo}">
-              </div>
-          </div>
-          <section id="sectionCarritoEscritorio" name="Carrito escritorio">
-              <div class="row text-start mt-5">
-                  <div class="col-6">
-                      <span class="kgp-sub-title" style="font-weight:bold;">Producto</span>
-                  </div>
-                  <div class="col-2"></div>
-                  <div class="col-4 text-end">
-                      <span class="kgp-sub-title" style="font-weight:bold;">Subtotal</span>
-                  </div>
-              </div>
-  `;
-
   let total = 0;
+  let productosHTML = '';
+
   comercioAleatorio.productos.forEach((producto) => {
-    carritoHTML += `
-          <div class="row text-start my-2 align-items-center">
-              <div class="col-3">
-                  <img class="rounded shoppingCart-productImage" src="${producto.imagen}" alt="${producto.nombre}">
-              </div>
-              <div class="col-6">
-                  <span class="kgp-body">${producto.nombre} (${producto.cantidad})</span>
-              </div>
-              <div class="col-3 text-end">
-                  <span class="kgp-body">$${producto.precio.toFixed(2)}</span>
-              </div>
-          </div>
-      `;
+    productosHTML += `
+      <div class="row my-3 align-items-center border-bottom pb-3">
+        <div class="col-3">
+          <img class="rounded img-fluid shoppingCart-productImage" src="${producto.imagen}" alt="${producto.nombre}" style="max-width:70px;">
+        </div>
+        <div class="col-6">
+          <span class="fw-semibold">${producto.nombre}</span>
+          <br/><small class="text-muted">Cantidad: ${producto.cantidad}</small>
+        </div>
+        <div class="col-3 text-end">
+          <span class="fw-semibold">$${producto.precio.toFixed(2)}</span>
+        </div>
+      </div>
+    `;
     total += producto.precio;
   });
 
-  carritoHTML += `
-      <div class="row mt-5">
-          <div class="col-6 text-start">
-              <span class="kgp-sub-title" style="font-weight:bold;">TOTAL</span>
+  const carritoHTML = `
+    <div class="card" style="border: none !important;">
+      <div class="card-body p-4">
+        <div class="text-center mb-4">
+          <img id="Image_Logo_Escritorio" class="rounded mb-2" alt="Logo comercio" src="${comercioAleatorio.logo}" style="max-width:80px;">
+          <h5 class="card-title fw-bold mb-0">Tu Carrito</h5>
+          <small class="text-muted">Productos agregados</small>
+        </div>
+
+        <!-- Encabezados de columnas -->
+        <div class="row text-start mb-2 border-bottom pb-2">
+          <div class="col-6 fw-semibold">Producto</div>
+          <div class="col-2"></div>
+          <div class="col-4 text-end fw-semibold">Subtotal</div>
+        </div>
+
+        ${productosHTML}
+
+        <!-- Total -->
+        <div class="row mt-4 pt-3">
+          <div class="col-8 text-start">
+            <span class="fw-bold">TOTAL</span>
           </div>
-          <div class="col-3"></div>
-          <div class="col-3 text-end">
-              <span id="lblPostAmount1Desktop" class="kgp-sub-title" style="font-weight:bold;">$${total.toFixed(2)}</span>
+          <div class="col-4 text-end">
+            <span id="lblPostAmount1Desktop" class="fw-bold">$${total.toFixed(2)}</span>
           </div>
+        </div>
       </div>
-  </section>
-  </div>
+    </div>
   `;
 
   // Insertar el HTML en los contenedores solo si existen los elementos
@@ -122,19 +122,18 @@ export function cargarCarritoAleatorio() {
     document.getElementById('contenedor-carrito-movil').innerHTML = carritoHTML;
   }
 
-  // Establecer la URL del logo solo si existe el elemento
-  if (document.getElementById("imgLogoEscritorio")) {
-    document.getElementById("imgLogoEscritorio").src = comercioAleatorio.logo;
+  // Actualizar la URL del logo
+  const imgLogo = document.getElementById("imgLogoEscritorio");
+  if (imgLogo) {
+    imgLogo.src = comercioAleatorio.logo;
   }
 
-  // Actualizar el texto de lblPostAmount solo si existe el elemento
-  if (document.getElementById('lblPostAmount')) {
-    document.getElementById('lblPostAmount').textContent = total.toFixed(2);
+  // Actualizar el texto de lblPostAmount solo si existe
+  const lblPostAmount = document.getElementById('lblPostAmount');
+  if (lblPostAmount) {
+    lblPostAmount.textContent = total.toFixed(2);
   }
-
 }
 
 // Ejecutar la función al cargar la página
-//window.onload = cargarCarritoAleatorio;
 document.addEventListener("DOMContentLoaded", cargarCarritoAleatorio);
-

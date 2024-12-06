@@ -16,7 +16,7 @@ class MyHeader extends HTMLElement {
             </div>
             <div class="offcanvas-body">
               <div class="nav-item px-0">
-                <div class="card px-0 py-5 shadow d-block d-md-none">
+                <div class="px-0 py-5 d-block d-md-none">
                   <div id="contenedor-carrito-movil" class="container text-center"></div>
                 </div>
               </div>
