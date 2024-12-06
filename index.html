@@ -54,7 +54,7 @@
         </div>
         <div class="col-12 col-md-6">
           <main id="PageBody">
-            <div class="container text-center mb-5">
+            <div class="container text-center mb-2">
               <img class="rounded logo-comercio mb-5" alt="Logo comercio" id="imgLogoEscritorio"
                 style="max-width:100px;" />
               <h5>Monto a pagar</h5>
@@ -64,16 +64,16 @@
             </div>
 
             <div class="container">
-              <div class="card mb-5" style="border: none;">
+              <div class="card mb-2" style="border: none;">
                 <div class="card-body p-4">
                   <div id="divPhone">
-                    <h5 class="card-title text-center mb-2">Verificación por Teléfono</h5>
-                    <div class="form-floating mb-3 mx-auto">
+                    <h5 class="card-title text-center mb-3">Verificación por Teléfono</h5>
+                    <div class="form-floating mb-3 mx-auto w-auto" style="max-width: 200px;">
                       <input type="tel" class="form-control text-center" id="txtPhone" placeholder="Número celular"
                         pattern="[0-9]*" maxlength="8" required />
                       <label for="txtPhone">Número celular</label>
                     </div>
-                    <div class="text-center">
+                    <div class="text-center mt-4">
                       <button type="button" id="BtnSendHsm" onclick="enviarCodigo();" class="btn btn-success mb-3">
                         <i class="bi bi-send-fill"></i> Enviar código de verificación
                       </button>
@@ -84,7 +84,7 @@
                     <div class="text-center mb-3">
                       <span class="text-muted" id="LblPhoneMessage">Hemos enviado un código a tu teléfono</span>
                     </div>
-                    <div class="form-floating mb-3">
+                    <div class="form-floating mb-3 mx-auto w-auto" style="max-width: 200px;">
                       <input type="tel" id="txtToken" autocomplete="one-time-code" inputmode="numeric" placeholder="OTP"
                         class="form-control text-center" pattern="\d{6}" maxlength="6" required />
                       <label for="txtToken">Código OTP</label>
