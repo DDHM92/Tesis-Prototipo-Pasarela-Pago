@@ -95,7 +95,7 @@ export function cargarCarritoAleatorio() {
             src="${comercioAleatorio.logo}" 
             style="max-width:80px;" 
             title="Logo del comercio seleccionado">
-          <h5 class="card-title fw-bold mb-0" title="Encabezado del carrito">Tu Carrito</h5>
+          <h5 class="card-title fw-bold mt-2 mb-0" title="Encabezado del carrito">Tu Carrito</h5>
           <small class="text-muted" title="Productos incluidos en tu carrito">Productos agregados</small>
         </div>
 
