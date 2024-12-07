@@ -13,15 +13,18 @@
     // Determina la ruta base según el modo
     var basePath = developmentmode
       ? "../../"  // Ruta local si developmentmode = true
-      : "https://xdaniel17.github.io/Tesis-Prototipo-Pasarela-Pago.github.io/../"; // Ruta remota si = false
-      // Carga los recursos propios en función del modo
-    document.write('<script type="module" src="' + basePath + '../../src/common-ui.js"><\/script>');
-    document.write('<script src="' + basePath + '../../src/general.js"><\/script>');
-    document.write('<script type="module" src="' + basePath + '../../src/shopping-cart.js"><\/script>');
-    document.write('<script type="module" src="' + basePath + '../../src/layout-components.js"><\/script>');
-    document.write('<link rel="stylesheet" href="' + basePath + '../../src/styles.css">');
+      : "https://xdaniel17.github.io/Tesis-Prototipo-Pasarela-Pago.github.io/"; // Ruta remota si = false
+    // Carga los recursos propios en función del modo
+    document.write('<script type="module" src="' + basePath + '/src/common-ui.js"><\/script>');
+    document.write('<script src="' + basePath + 'src/general.js"><\/script>');
+    //document.write('<script src="' + basePath + 'src/credit-card.js"><\/script>');
+    document.write('<script type="module" src="' + basePath + 'src/shopping-cart.js"><\/script>');
+    document.write('<script type="module" src="' + basePath + 'src/layout-components.js"><\/script>');
+    document.write('<link rel="stylesheet" href="' + basePath + 'src/styles.css">');
+    //document.write('<link rel="stylesheet" href="' + basePath + 'src/credit-card.css">');
     //document.getElementById('faviconLink').href = basePath + 'Image/favicon.ico';
   </script>
+  Í
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -207,7 +210,7 @@
     document.addEventListener('DOMContentLoaded', () => {
       const linkAddCard = document.getElementById('lnkBack');
       if (linkAddCard) {
-        linkAddCard.href = basePath + '../Module/PayOrder.html';
+        linkAddCard.href = basePath + 'Module/PayOrder.html';
       }
     });
   </script>
@@ -223,7 +226,7 @@
         // Muestra el toast de confirmación
         showToast("Método Guardado", "La nueva dirección se ha guardado exitosamente.", "Hace unos segundos");
         // Opcional: Si deseas redirigir después de mostrar el mensaje
-        var url = basePath + '/Module/PayOrder.html';
+        var url = basePath + 'Module/PayOrder.html';
         window.location.href = url;
       }, 1000); // Simula un tiempo de espera
     });
