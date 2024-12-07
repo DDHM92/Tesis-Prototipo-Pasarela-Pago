@@ -60,10 +60,10 @@
                 <div class="card-body">
                     <h5 class="card-title text-center mb-4">Resumen de la Compra</h5>
                     <p class="text-center mb-2">
-                        <strong>Número de Orden:</strong> <span class="text-primary fw-semibold">#123456</span>
+                        <strong>Número de Orden:</strong> <span class="fw-semibold">#123456</span>
                     </p>
                     <p class="text-center mb-4">
-                        <strong>Estado de la Orden:</strong> <span class="text-success fw-semibold">Ingresada</span>
+                        <strong>Estado de la Orden:</strong> <span class="fw-semibold">Ingresada</span>
                     </p>
 
                     <table class="table table-borderless text-center mb-4">
@@ -106,7 +106,7 @@
                 </div>
             </div>
 
-            <div class="text-center mt-4">
+            <div class="text-center my-4">
                 <a id="btnOrderHistory" href="#" class="btn btn-primary">
                     <i class="bi bi-clock-history"></i> Ver historial de órdenes
                 </a>
@@ -121,7 +121,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             const linkAddCard = document.getElementById('btnOrderHistory');
             if (linkAddCard) {
-                linkAddCard.href = basePath + '../Module/Orders/OrderHistory.html';
+                linkAddCard.href = basePath + 'Module/Orders/OrderHistory.html';
             }
         });
     </script>
