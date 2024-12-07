@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Prototipo Pasarela de pago</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <script>
+        var developmentmode = true; // o false, según la necesidad de la página
+    </script>
+    <script>
+        // Determina la ruta base según el modo
+        var basePath = developmentmode
+            ? "../"  // Ruta local si developmentmode = true
+            : "https://xdaniel17.github.io/Tesis-Prototipo-Pasarela-Pago.github.io/../"; // Ruta remota si = false
+
+        document.write('<script type="module" src="' + basePath + 'src/common-ui.js"><\/script>');
+        document.write('<script src="' + basePath + 'src/general.js"><\/script>');
+        document.write('<script type="module" src="' + basePath + 'src/shopping-cart.js"><\/script>');
+        document.write('<script type="module" src="' + basePath + 'src/layout-components.js"><\/script>');
+        document.write('<link rel="stylesheet" href="' + basePath + 'src/styles.css">');
+    </script>
+
+    <link rel="icon" href="/Tesis-Prototipo-Pasarela-Pago.github.io/src/Image/favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap"
+        rel="stylesheet" />
+
+    <!-- Bootstrap CSS & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        crossorigin="anonymous" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css"
+        rel="stylesheet" />
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <my-header></my-header>
+
+    <div class="flex-grow-1">
+        <div class="container pt-5 mt-5">
+            <section class="mb-5">
+                <h2 class="text-center">Introducción</h2>
+                <p>
+                    Este prototipo de pasarela de pago multicomercio fue desarrollado como parte del proyecto de
+                    graduación
+                    para la <strong>Maestría en Arquitectura de Software</strong>. Su propósito principal es ofrecer una
+                    plataforma centralizada
+                    que permita a múltiples comercios gestionar sus pagos, ventas y envíos de forma eficiente, segura y
+                    personalizada.
+                </p>
+            </section>
+
+            <section class="mb-5">
+                <h2 class="text-center">Características</h2>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <i class="bi bi-check-circle-fill text-success"></i>
+                        Autenticación multifactor para mayor seguridad.
+                    </li>
+                    <li class="list-group-item">
+                        <i class="bi bi-check-circle-fill text-success"></i>
+                        Integración con múltiples métodos de pago como tarjetas de crédito y débito.
+                    </li>
+                    <li class="list-group-item">
+                        <i class="bi bi-check-circle-fill text-success"></i>
+                        Automatización de tareas como recordatorios de pago y resúmenes de transacciones.
+                    </li>
+                    <li class="list-group-item">
+                        <i class="bi bi-check-circle-fill text-success"></i>
+                        Diseño adaptable e intuitivo para usuarios con distintos niveles de experiencia.
+                    </li>
+                </ul>
+            </section>
+
+            <section class="mb-5">
+                <h2 class="text-center">Objetivos</h2>
+                <p>
+                    El objetivo principal del prototipo es demostrar cómo una pasarela de pago puede satisfacer las
+                    necesidades
+                    de un entorno multicomercio mediante un diseño centrado en la <strong>usabilidad</strong>, la
+                    <strong>seguridad</strong>
+                    y la <strong>escalabilidad</strong>. Además, busca:
+                </p>
+                <ul>
+                    <li>Facilitar la integración de nuevos comercios.</li>
+                    <li>Proveer reportes detallados para la toma de decisiones.</li>
+                    <li>Garantizar transacciones seguras y encriptadas.</li>
+                </ul>
+            </section>
+
+            <section class="mb-5">
+                <h2 class="text-center">Tecnologías Utilizadas</h2>
+                <p>
+                    Este prototipo fue desarrollado utilizando tecnologías modernas para garantizar su funcionalidad y
+                    escalabilidad.
+                    Algunas de ellas incluyen:
+                </p>
+                <ul class="list-group">
+                    <li class="list-group-item"><i class="bi bi-stack"></i> Lenguaje de programación: C#</li>
+                    <li class="list-group-item"><i class="bi bi-stack"></i> Framework: ASP.NET WebForms</li>
+                    <li class="list-group-item"><i class="bi bi-stack"></i> Base de datos: SQL Server</li>
+                    <li class="list-group-item"><i class="bi bi-stack"></i> Diseño Front-End: Bootstrap</li>
+                </ul>
+            </section>
+            </main>
+        </div>
+    </div>
+
+
+    <my-footer></my-footer>
+    <my-common-ui></my-common-ui>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" href="/Tesis-Prototipo-Pasarela-Pago.github.io/src/Image/favicon.ico" type="image/x-icon" />
   <script>
-    var developmentmode = false; // o false, según la necesidad de la página
+    var developmentmode = true; // o false, según la necesidad de la página
   </script>
   <script>
     // Determina la ruta base según el modo
     var basePath = developmentmode
-      ? "../src/"  // Ruta local si developmentmode = true
-      : "https://xdaniel17.github.io/Tesis-Prototipo-Pasarela-Pago.github.io/src/"; // Ruta remota si = false
+      ? "../"  // Ruta local si developmentmode = true
+      : "https://xdaniel17.github.io/Tesis-Prototipo-Pasarela-Pago.github.io/../"; // Ruta remota si = false
     // Carga los recursos propios en función del modo
-    document.write('<script type="module" src="' + basePath + 'common-ui.js"><\/script>');
-    document.write('<script src="' + basePath + 'general.js"><\/script>');
-    document.write('<script type="module" src="' + basePath + 'shopping-cart.js"><\/script>');
-    document.write('<script type="module" src="' + basePath + 'layout-components.js"><\/script>');
-    document.write('<link rel="stylesheet" href="' + basePath + 'styles.css">');
+    document.write('<script type="module" src="' + basePath + 'src/common-ui.js"><\/script>');
+    document.write('<script src="' + basePath + 'src/general.js"><\/script>');
+    document.write('<script type="module" src="' + basePath + 'src/shopping-cart.js"><\/script>');
+    document.write('<script type="module" src="' + basePath + 'src/layout-components.js"><\/script>');
+    document.write('<link rel="stylesheet" href="' + basePath + 'src/styles.css">');
     //document.getElementById('faviconLink').href = basePath + 'Image/favicon.ico';
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -76,15 +76,13 @@
                     <span class="input-group-text" id="basic-addon_FullName">
                       <i class="bi bi-person-circle"></i>
                     </span>
-                    <input name="ctl00$MainContent$txtFullName" value="Maria Lopez" id="txtFullName"
-                      type="text" class="form-control" placeholder="Nombre Completo"
-                      aria-describedby="basic-addon_FullName">
+                    <input name="ctl00$MainContent$txtFullName" value="Maria Lopez" id="txtFullName" type="text"
+                      class="form-control" placeholder="Nombre Completo" aria-describedby="basic-addon_FullName">
                   </div>
                   <div class="input-group mb-2">
                     <span class="input-group-text" id="basic-addon_Email"><i class="bi bi-envelope"></i></span>
-                    <input name="ctl00$MainContent$txtEmail" value="test@test.com" id="txtEmail"
-                      type="email" class="form-control" placeholder="Correo Electronico"
-                      aria-describedby="basic-addon_Email">
+                    <input name="ctl00$MainContent$txtEmail" value="test@test.com" id="txtEmail" type="email"
+                      class="form-control" placeholder="Correo Electronico" aria-describedby="basic-addon_Email">
                   </div>
                   <fieldset disabled="">
                     <div class="input-group mb-2">
@@ -114,8 +112,7 @@
                   <div class="row text-end">
                     <div class="col-6"></div>
                     <div class="col-6">
-                      <a id="lnkShippingAddress" class="text-end"
-                        href="#">Agregar dirección</a>
+                      <a id="lnkShippingAddress" class="text-end" href="#">Agregar dirección</a>
                     </div>
                   </div>
                 </div>
@@ -141,8 +138,8 @@
                     <div class="input-group mb-2">
                       <span class="input-group-text" id="basic-addon_CreditCard"><i
                           class="bi bi-credit-card"></i></span>
-                      <select name="ctl00$MainContent$ddlCreditCard" id="ddlCreditCard" type="text"
-                        class="form-control" aria-describedby="basic-addon_CreditCard">
+                      <select name="ctl00$MainContent$ddlCreditCard" id="ddlCreditCard" type="text" class="form-control"
+                        aria-describedby="basic-addon_CreditCard">
                         <option selected="selected" value="1359">VISA - ***1111</option>
                         <option value="1358">VISA - ***1111</option>
                         <option value="1245">VISA - ***1111</option>
@@ -152,8 +149,7 @@
                     <div class="row text-end">
                       <div class="col-7"></div>
                       <div class="col-5">
-                        <a id="lnkAddCard" class="text-end"
-                          href="#">Agregar tarjeta</a>
+                        <a id="lnkAddCard" class="text-end" href="#">Agregar tarjeta</a>
                       </div>
                     </div>
                   </section>
@@ -202,15 +198,50 @@
   <script>
     document.getElementById('lnkcompleteOrder').addEventListener('click', function (event) {
       event.preventDefault(); // Previene la navegación inmediata
+
+      // Validación de los campos
+      const fullName = document.getElementById('txtFullName').value.trim();
+      const email = document.getElementById('txtEmail').value.trim();
+      const shippingAddress = document.getElementById('ddlShippingAddress').value.trim();
+      const paymentType = document.getElementById('DropDownListPaymentType').value.trim();
+      const creditCard = document.getElementById('ddlCreditCard').value.trim();
+
+      if (!fullName) {
+        showToast("Error", "El nombre completo es obligatorio.", "Hace unos segundos");
+        return;
+      }
+
+      if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
+        showToast("Error", "El correo electrónico no es válido.", "Hace unos segundos");
+        return;
+      }
+
+      if (!shippingAddress) {
+        showToast("Error", "Debe seleccionar una dirección de envío.", "Hace unos segundos");
+        return;
+      }
+
+      if (!paymentType) {
+        showToast("Error", "Debe seleccionar un método de pago.", "Hace unos segundos");
+        return;
+      }
+
+      if (!creditCard) {
+        showToast("Error", "Debe seleccionar una tarjeta de crédito.", "Hace unos segundos");
+        return;
+      }
+
+      // Si todos los campos están completos, continúa con el proceso de pago
       showLoader();
 
       setTimeout(() => {
         hideLoader();
-        showToast("Método Guardado", "Tu Compra se ha realizado exitosamente", "Hace unos segundos");
+        showToast("Método Guardado", "Tu compra se ha realizado exitosamente", "Hace unos segundos");
         window.location.href = basePath + '../Module/Orders/CompleteOrder.html';
-      }, 2000);
+      }, 1000);
     });
   </script>
+
 </body>
 
 </html>

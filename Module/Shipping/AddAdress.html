@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" href="/Tesis-Prototipo-Pasarela-Pago.github.io/src/Image/favicon.ico" type="image/x-icon" />
   <script>
-    var developmentmode = false; // o false, según la necesidad de la página
+    var developmentmode = true; // o false, según la necesidad de la página
   </script>
   <script>
     // Determina la ruta base según el modo
     var basePath = developmentmode
-      ? "../../src/"  // Ruta local si developmentmode = true
-      : "https://xdaniel17.github.io/Tesis-Prototipo-Pasarela-Pago.github.io/src/"; // Ruta remota si = false
-    // Carga los recursos propios en función del modo
-    document.write('<script type="module" src="' + basePath + 'common-ui.js"><\/script>');
-    document.write('<script src="' + basePath + 'general.js"><\/script>');
-    document.write('<script type="module" src="' + basePath + 'shopping-cart.js"><\/script>');
-    document.write('<script type="module" src="' + basePath + 'layout-components.js"><\/script>');
-    document.write('<link rel="stylesheet" href="' + basePath + 'styles.css">');
+      ? "../../"  // Ruta local si developmentmode = true
+      : "https://xdaniel17.github.io/Tesis-Prototipo-Pasarela-Pago.github.io/../../"; // Ruta remota si = false
+      // Carga los recursos propios en función del modo
+    document.write('<script type="module" src="' + basePath + '../../src/common-ui.js"><\/script>');
+    document.write('<script src="' + basePath + '../../src/general.js"><\/script>');
+    document.write('<script type="module" src="' + basePath + '../../src/shopping-cart.js"><\/script>');
+    document.write('<script type="module" src="' + basePath + '../../src/layout-components.js"><\/script>');
+    document.write('<link rel="stylesheet" href="' + basePath + '../../src/styles.css">');
     //document.getElementById('faviconLink').href = basePath + 'Image/favicon.ico';
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -50,187 +50,147 @@
           </section>
         </div>
         <div class="col-6 col-12 col-md-6">
-          <section>
-            <div class="container text-center pt-4" id="divLblAmount">
-              <section name="contendor derecho" class="mt-1 mb-3">
-                <div class="container text-center">
-                  <div class="row mt-3 text-center">
-                    <span style="font-weight:bold;">Nueva dirección de envio</span>
-                  </div>
-                  <div class="row">
-                    <div class="col-12">
-                      <div class="row mb-1 text-start">
-                        <span>Nombre de ubicación:</span>
+          <div class="container text-center pt-1" id="divLblAmount">
+            <section name="contendor derecho" class="mb-2">
+              <div class="container text-center">
+                <div class="row text-center">
+                  <span style="font-weight:bold;">Nueva dirección de envío</span>
+                </div>
+                <div class="row mt-4">
+                  <div class="col-12">
+                    <div class="row mb-1 text-start">
+                      <span>Nombre de ubicación:</span>
+                    </div>
+                    <div class="input-group mb-2">
+                      <span class="input-group-text" id="basic-addon_ShippingName" title="Nombre del lugar de envío">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                          class="bi bi-person-circle" viewBox="0 0 16 16">
+                          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"></path>
+                          <path fill-rule="evenodd"
+                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z">
+                          </path>
+                        </svg>
+                      </span>
+                      <input name="txtShippingAddressName" maxlength="25" id="txtShippingAddressName" type="text"
+                        class="form-control" aria-describedby="basic-addon_ShippingName"
+                        placeholder="Ejemplo: Casa o Oficina"
+                        title="Introduce el nombre de la ubicación. Ejemplo: Casa u Oficina">
+                    </div>
+                    <div class="row mb-1 text-start">
+                      <span>Dirección:</span>
+                    </div>
+                    <div class="input-group mb-2">
+                      <textarea name="txtShippingAddress" rows="4" cols="20" maxlength="100" id="txtShippingAddress"
+                        type="text" class="form-control" placeholder="Introduce la dirección completa"
+                        title="Introduce la dirección completa del lugar de envío"></textarea>
+                    </div>
+                    <div class="row mb-1 text-start">
+                      <span>País:</span>
+                    </div>
+                    <div class="input-group mb-2">
+                      <span class="input-group-text" id="basic-addon_Pais" title="Selecciona el país">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                          class="bi bi-geo-alt" viewBox="0 0 16 16">
+                          <path
+                            d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z">
+                          </path>
+                          <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+                        </svg>
+                      </span>
+                      <select name="ddlShippingCountry" id="ddlShippingCountry" type="text" class="form-control"
+                        aria-describedby="basic-addon_Pais" title="Selecciona el país de envío">
+                        <option selected="selected" value="El Salvador">El Salvador</option>
+                      </select>
+                    </div>
+                    <div class="row mb-1 text-start">
+                      <span>Departamento:</span>
+                    </div>
+                    <div class="input-group mb-2">
+                      <span class="input-group-text" id="basic-addon_Departamento" title="Selecciona el departamento">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                          class="bi bi-geo-alt" viewBox="0 0 16 16">
+                          <path
+                            d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z">
+                          </path>
+                          <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+                        </svg>
+                      </span>
+                      <select name="ddlShippingCities" id="ddlShippingCities" type="text" class="form-control"
+                        aria-describedby="basic-addon_Departamento" title="Selecciona el departamento de envío">
+                        <option value="1">Ahuachapán</option>
+                        <option value="2">Cabañas</option>
+                        <option value="3">Chalatenango</option>
+                        <option value="4">Cuscatlán</option>
+                        <option value="5">La Libertad</option>
+                        <option value="6">La Paz</option>
+                        <option value="7">La Unión</option>
+                        <option value="8">Morazán</option>
+                        <option value="9">San Miguel</option>
+                        <option value="10" selected>San Salvador</option>
+                        <option value="11">San Vicente</option>
+                        <option value="12">Santa Ana</option>
+                        <option value="13">Sonsonate</option>
+                        <option value="14">Usulután</option>
+                      </select>
+                    </div>
+                    <div class="row mb-1 text-start">
+                      <span>Municipio:</span>
+                    </div>
+                    <div class="input-group mb-2">
+                      <span class="input-group-text" id="basic-addon_Municipio" title="Selecciona el municipio">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                          class="bi bi-geo-alt" viewBox="0 0 16 16">
+                          <path
+                            d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z">
+                          </path>
+                          <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+                        </svg>
+                      </span>
+                      <select name="ddlShippingStates" id="ddlShippingStates" type="text" class="form-control"
+                        aria-describedby="basic-addon_Municipio" title="Selecciona el municipio de envío">
+                        <option value="179">Aguilares</option>
+                        <option value="180">Apopa</option>
+                        <option value="181">Ayutuxtepeque</option>
+                        <option value="182">Cuscatancingo</option>
+                        <option value="183">Delgado</option>
+                        <option value="184">El Paisnal</option>
+                        <option value="185">Guazapa</option>
+                        <option value="186">Ilopango</option>
+                        <option value="187">Mejicanos</option>
+                        <option value="188">Nejapa</option>
+                        <option value="189">Panchimalco</option>
+                        <option value="190">Rosario de Mora</option>
+                        <option value="191">San Marcos</option>
+                        <option value="192">San Martín</option>
+                        <option value="193" selected>San Salvador</option>
+                        <option value="194">Santiago Texacuangos</option>
+                        <option value="195">Santo Tomás</option>
+                        <option value="196">Soyapango</option>
+                        <option value="197">Tonacatepeque</option>
+                      </select>
+                    </div>
+                    <div class="row text-center mt-5">
+                      <div class="col align-self-center">
+                        <a id="lnkBack" class="btn btn-secondary mb-3"
+                          href="https://xdaniel17.github.io/Tesis-Prototipo-Pasarela-Pago.github.io/Module/Pay.html">
+                          Regresar
+                        </a>
                       </div>
-                      <div class="input-group mb-2">
-                        <span class="input-group-text" id="basic-addon_ShippingName">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-person-circle" viewBox="0 0 16 16">
-                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"></path>
-                            <path fill-rule="evenodd"
-                              d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z">
-                            </path>
-                          </svg></span>
-                        <input name="ctl00$MainContent$txtShippingAddressName" maxlength="25"
-                          id="MainContent_txtShippingAddressName" type="text" class="form-control"
-                          aria-describedby="basic-addon_ShippingName">
-                        <span data-val-controltovalidate="MainContent_txtShippingAddressName" data-val-focusonerror="t"
-                          data-val-errormessage="Este campo es requerido" data-val-display="Dynamic"
-                          data-val-validationgroup="ValidateShippingSave"
-                          id="MainContent_RequiredFieldShippingAddressName" data-val="true"
-                          data-val-evaluationfunction="RequiredFieldValidatorEvaluateIsValid" data-val-initialvalue=""
-                          style="color:Red;display:none;">Este campo es requerido</span>
+                      <div class="col align-self-center">
+                        <a id="lnkShippingInfo_Save" class="btn btn-success mb-3"
+                          href="https://xdaniel17.github.io/Tesis-Prototipo-Pasarela-Pago.github.io/Module/Pay.html">
+                          Guardar
+                        </a>
                       </div>
-                      <div class="row mb-1 text-start">
-                        <span>Dirección:</span>
-                      </div>
-                      <div class="input-group mb-2">
-                        <textarea name="ctl00$MainContent$txtShippingAddress" rows="4" cols="20" maxlength="100"
-                          id="MainContent_txtShippingAddress" type="text" class="form-control"></textarea>
-                        <span data-val-controltovalidate="MainContent_txtShippingAddress" data-val-focusonerror="t"
-                          data-val-errormessage="Este campo es requerido" data-val-display="Dynamic"
-                          data-val-validationgroup="ValidateShippingSave" id="MainContent_RequiredFieldShippingAddress"
-                          data-val="true" data-val-evaluationfunction="RequiredFieldValidatorEvaluateIsValid"
-                          data-val-initialvalue="" style="color:Red;display:none;">Este campo es requerido</span>
-                      </div>
-                      <div class="row mb-1 text-start">
-                        <span>País:</span>
-                      </div>
-                      <div class="input-group mb-2">
-                        <span class="input-group-text" id="basic-addon_Pais">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-geo-alt" viewBox="0 0 16 16">
-                            <path
-                              d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z">
-                            </path>
-                            <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
-                          </svg>
-                        </span>
-                        <select name="ctl00$MainContent$ddlShippingCountry" id="MainContent_ddlShippingCountry"
-                          type="text" class="form-control" aria-describedby="basic-addon_Pais">
-                          <option selected="selected" value="El Salvador">El Salvador</option>
-
-                        </select>
-                        <span class="input-group-text">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                              d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z">
-                            </path>
-                          </svg>
-                        </span>
-                      </div>
-                      <div class="row mb-1 text-start">
-                        <span>Departamento:</span>
-                      </div>
-                      <div class="input-group mb-2">
-                        <span class="input-group-text" id="basic-addon_Departamento">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-geo-alt" viewBox="0 0 16 16">
-                            <path
-                              d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z">
-                            </path>
-                            <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
-                          </svg>
-                        </span>
-                        <select name="ctl00$MainContent$ddlShippingCities" id="MainContent_ddlShippingCities"
-                          type="text" class="form-control" aria-describedby="basic-addon_Departamento">
-                          <option value="1">Ahuachapán</option>
-                          <option value="2">Cabañas</option>
-                          <option value="3">Chalatenango</option>
-                          <option value="4">Cuscatlán</option>
-                          <option value="5">La Libertad</option>
-                          <option value="6">La Paz</option>
-                          <option value="7">La Unión</option>
-                          <option value="8">Morazán</option>
-                          <option value="9">San Miguel</option>
-                          <option selected="selected" value="10">San Salvador</option>
-                          <option value="11">San Vicente</option>
-                          <option value="12">Santa Ana</option>
-                          <option value="13">Sonsonate</option>
-                          <option value="14">Usulután</option>
-
-                        </select>
-                        <span class="input-group-text">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                              d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z">
-                            </path>
-                          </svg>
-                        </span>
-                      </div>
-                      <div class="row mb-1 text-start">
-                        <span>Municipio:</span>
-                      </div>
-                      <div class="input-group mb-2">
-                        <span class="input-group-text" id="basic-addon_Municipio">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-geo-alt" viewBox="0 0 16 16">
-                            <path
-                              d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z">
-                            </path>
-                            <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
-                          </svg>
-                        </span>
-                        <select name="ctl00$MainContent$ddlShippingStates" id="MainContent_ddlShippingStates"
-                          type="text" class="form-control" aria-describedby="basic-addon_Municipio">
-                          <option selected="selected" value="179">Aguilares</option>
-                          <option value="180">Apopa</option>
-                          <option value="181">Ayutuxtepeque</option>
-                          <option value="182">Cuscatancingo</option>
-                          <option value="183">Delgado</option>
-                          <option value="184">El Paisnal</option>
-                          <option value="185">Guazapa</option>
-                          <option value="186">Ilopango</option>
-                          <option value="187">Mejicanos</option>
-                          <option value="188">Nejapa</option>
-                          <option value="189">Panchimalco</option>
-                          <option value="190">Rosario de Mora</option>
-                          <option value="191">San Marcos</option>
-                          <option value="192">San Martín</option>
-                          <option value="193">San Salvador</option>
-                          <option value="194">Santiago Texacuangos</option>
-                          <option value="195">Santo Tomás</option>
-                          <option value="196">Soyapango</option>
-                          <option value="197">Tonacatepeque</option>
-
-                        </select>
-                        <span class="input-group-text">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                              d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z">
-                            </path>
-                          </svg>
-                        </span>
-                      </div>
-
                     </div>
                   </div>
                 </div>
-                <div class="row text-center mt-2 mb-4">
-                  <div class="col">
-                    <a id="lnkBack" class="btn btn-secondary mb-3"
-                      href="https://xdaniel17.github.io/Tesis-Prototipo-Pasarela-Pago.github.io/Module/Pay.html">
-                      Regresar
-                    </a>
-                  </div>
-                  <div class="col">
-                    <a id="lnkShippingInfo_Save" class="btn btn-success mb-3"
-                      href="https://xdaniel17.github.io/Tesis-Prototipo-Pasarela-Pago.github.io/Module/Pay.html">
-                      Guardar
-                    </a>
-                  </div>
-                </div>
-              </section>
-          </section>
+            </section>
+          </div>
         </div>
-        </section>
       </div>
-    </div>
-    </div>
   </main>
+
 
   <my-footer></my-footer>
 

@@ -36,14 +36,14 @@ class MyFooter extends HTMLElement {
           <div class="row mt-2">
             <div class="col-lg-4 col-md-6 mb-1 mb-md-0">
               <div class="mt-2">
-                <a class="btn btn-floating" target="_blank" href="https://www.facebook.com/"><i class="bi bi-whatsapp"></i></a>
+                <a class="btn btn-floating" target="_blank" href="https://web.whatsapp.com/"><i class="bi bi-whatsapp"></i></a>
                 <a class="btn btn-floating" target="_blank" href="https://www.facebook.com/"><i class="bi bi-facebook"></i></a>
                 <a class="btn btn-floating" target="_blank" href="https://www.instagram.com/"><i class="bi bi-instagram"></i></a>
-                <a class="btn btn-floating" target="_blank" href="https://www.instagram.com/"><i class="bi bi-youtube"></i></a>
+                <a class="btn btn-floating" target="_blank" href="https://www.youtubr.com/"><i class="bi bi-youtube"></i></a>
               </div>
               <div class="footer-links mt-2">
-                <a href="About.html">Acerca de nosotros</a> /
-                <a href="Contact.html">Contáctanos</a>
+                <a href="${basePath}About.html">Acerca de nosotros</a> /
+                <a href="${basePath}Contact.html">Contáctanos</a>
               </div>
               <p class="mt-3">
                 &copy;2024 - Prototipo Pasarela Pago
