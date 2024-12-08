@@ -14,7 +14,7 @@
     var basePath = developmentmode
       ? "../../"  // Ruta local si developmentmode = true
       : "https://xdaniel17.github.io/Tesis-Prototipo-Pasarela-Pago.github.io/"; // Ruta remota si = false
-      // Carga los recursos propios en función del modo
+    // Carga los recursos propios en función del modo
     document.write('<script type="module" src="' + basePath + '/src/common-ui.js"><\/script>');
     document.write('<script src="' + basePath + 'src/general.js"><\/script>');
     document.write('<script src="' + basePath + 'src/credit-card.js"><\/script>');
@@ -303,19 +303,47 @@
   <script>
     document.getElementById('lnkBillingInfo_Save').addEventListener('click', function (event) {
       event.preventDefault(); // Previene la navegación inmediata
-      // Muestra el loader
+
+      // Obtener valores de los campos
+      const name = document.getElementById('name').value.trim();
+      const cardNumber = document.getElementById('cardnumber').value.trim();
+      const expirationDate = document.getElementById('expirationdate').value.trim();
+      const securityCode = document.getElementById('securitycode').value.trim();
+
+      // Validaciones
+      if (!name) {
+        showToast("Error", "El nombre del tarjetahabiente es obligatorio.", "Hace unos segundos");
+        return;
+      }
+
+      if (!cardNumber || !/^\d{16}$/.test(cardNumber)) {
+        showToast("Error", "El número de tarjeta debe ser válido y contener 16 dígitos.", "Hace unos segundos");
+        return;
+      }
+
+      if (!expirationDate || !/^\d{2}\/\d{2}$/.test(expirationDate)) {
+        showToast("Error", "La fecha de expiración debe estar en formato MM/YY.", "Hace unos segundos");
+        return;
+      }
+
+      if (!securityCode || !/^\d{3}$/.test(securityCode)) {
+        showToast("Error", "El CVV debe contener 3 dígitos.", "Hace unos segundos");
+        return;
+      }
+
+      // Si todo está correcto, continuar con el proceso
       showLoader();
-      // Simula un tiempo de espera para la confirmación
+
       setTimeout(() => {
         hideLoader();
-        // Muestra el toast de confirmación
         showToast("Método Guardado", "El nuevo método de pago ha sido guardado exitosamente.", "Hace unos segundos");
-        // Opcional: Si deseas redirigir después de mostrar el mensaje
+        // Redirigir después de guardar
         var url = basePath + 'Module/PayOrder.html';
         window.location.href = url;
       }, 1000); // Simula un tiempo de espera
     });
   </script>
+
 
 </body>
 

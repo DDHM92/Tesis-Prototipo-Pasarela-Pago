@@ -194,7 +194,6 @@
       </div>
   </main>
 
-
   <my-footer></my-footer>
 
   <my-common-ui></my-common-ui>
@@ -218,19 +217,55 @@
   <script>
     document.getElementById('lnkShippingInfo_Save').addEventListener('click', function (event) {
       event.preventDefault(); // Previene la navegación inmediata
-      // Muestra el loader
+
+      // Obtiene los valores de los campos
+      const shippingName = document.getElementById('txtShippingAddressName').value.trim();
+      const shippingAddress = document.getElementById('txtShippingAddress').value.trim();
+      const country = document.getElementById('ddlShippingCountry').value.trim();
+      const department = document.getElementById('ddlShippingCities').value.trim();
+      const municipality = document.getElementById('ddlShippingStates').value.trim();
+
+      // Valida que los campos no estén vacíos
+      if (!shippingName) {
+        showToast("Error", "El nombre de la ubicación es obligatorio.", "Hace unos segundos");
+        return;
+      }
+
+      if (!shippingAddress) {
+        showToast("Error", "La dirección es obligatoria.", "Hace unos segundos");
+        return;
+      }
+
+      if (!country) {
+        showToast("Error", "Debes seleccionar un país.", "Hace unos segundos");
+        return;
+      }
+
+      if (!department) {
+        showToast("Error", "Debes seleccionar un departamento.", "Hace unos segundos");
+        return;
+      }
+
+      if (!municipality) {
+        showToast("Error", "Debes seleccionar un municipio.", "Hace unos segundos");
+        return;
+      }
+
+      // Si todos los campos están completos, procede con el guardado
       showLoader();
-      // Simula un tiempo de espera para la confirmación
+
       setTimeout(() => {
         hideLoader();
         // Muestra el toast de confirmación
         showToast("Método Guardado", "La nueva dirección se ha guardado exitosamente.", "Hace unos segundos");
-        // Opcional: Si deseas redirigir después de mostrar el mensaje
+
+        // Redirige a la página de confirmación o siguiente paso
         var url = basePath + 'Module/PayOrder.html';
         window.location.href = url;
       }, 1000); // Simula un tiempo de espera
     });
   </script>
+
 
 </body>
 
