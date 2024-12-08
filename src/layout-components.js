@@ -3,7 +3,7 @@ class MyHeader extends HTMLElement {
     this.innerHTML = `
       <nav class="navbar navbar-expand-lg fixed-top" id="navbar">
         <div class="container-fluid">
-          <a class="navbar-brand" href="Default.html">Prototipo Pasarela Pago</a>
+          <a class="navbar-brand" href="https://xdaniel17.github.io/Tesis-Prototipo-Pasarela-Pago.github.io/index.html">Prototipo Pasarela Pago</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
             aria-controls="offcanvasNavbar">
             <span class="navbar-toggler-icon"></span>
